@@ -6,39 +6,51 @@
 #    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2024/12/16 17:38:15 by abergman         ###   ########.fr        #
+#    Updated: 2024/12/16 19:56:30 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= cub3D
+UNAME			= $(shell uname)
 
+CC				= @cc
 OBJDIR 			= bin
-SRC				:= $(shell find . -type f -name "*.c")
+SRC				:= $(shell find srcs/ -type f -name "*.c")
 
 OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 
 HEADERS 		= ./header/cub3D.h
+LIBFT			= ./libft/libft.a
 
 DEBUG			= -g3 -fsanitize=address,leak,undefined
-
-CC				= cc -o3 -Wall -Wextra -Werror $(DEBUG)
+CFLAGS			= -Wall -Wextra -Werror -o3 $(DEBUG)
 
 RM				= @rm -f
 
+MLX_DIR			= ./mlx
+MLX_LIB			= $(MLX_DIR)/libmlx_$(UNAME).a
+MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+
+all: $(MLX_LIB) $(NAME)
+
 $(OBJDIR)/%.o: ./%.c $(HEADERS)
 		@mkdir -p $(dir $@)
-		$(CC) -c $< -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJDIR) $(HEADERS) $(OBJS)
-		$(shell hostname > /goinfre/hostname)
-		$(CC) $(OBJS) -o $(NAME) -lreadline
-		@echo "\n$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): The program is ready. You can use './minishell' for execute.\n"
+$(NAME): $(LIBFT) $(OBJDIR) $(HEADERS) $(OBJS)
+		$(CC)  $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS)
+		@echo "\n$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): You can use './cub3D' for execute.\n"
 
-all: $(NAME)
+mlx:
+		@mkdir mlx;
+		git clone https://github.com/42Paris/minilibx-linux.git mlx;
+
+$(MLX_LIB):
+		@make -C $(MLX_DIR)
 
 $(LIBFT):
-		@make -C ./libft
-
+	@make -C ./libft bonus --no-print-directory -s
+		
 $(OBJDIR):
 	@mkdir $@
 
@@ -48,12 +60,11 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) /goinfre/hostname
 	@make -C ./libft fclean --no-print-directory
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re mlx
 
 BOLD	= \e[1m
 BOLD_R	= \e[0m

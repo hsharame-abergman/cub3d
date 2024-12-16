@@ -3,6 +3,7 @@
 /.idea
 /.vscode
 /bin
+/mlx
 cub3D
 
 # Object files

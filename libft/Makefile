@@ -13,7 +13,7 @@ BNS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
       ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 SRCS = $(LIBC) $(SPL)
-SRCSALL = $(LIBC) $(BNS)
+SRCSALL = $(LIBC) $(SPL) $(BNS)
 OBJS = $(SRCS:.c=.o)
 OBJSALL = $(SRCSALL:.c=.o)
 
@@ -32,10 +32,10 @@ bonus: $(OBJSALL) libft.h
 all: $(NAME)
 
 clean:
-	/bin/rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	/bin/rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

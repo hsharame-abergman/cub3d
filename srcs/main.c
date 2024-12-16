@@ -6,16 +6,16 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2024/12/16 16:00:44 by abergman         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:29:57 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	main() {
-	int res;
-	int a;
+int	main(void)
+{
+	int	res;
 
 	res = printf("Hello World!\n");
-	return (0);
+	return (res);
 }
