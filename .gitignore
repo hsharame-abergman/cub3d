@@ -1,5 +1,9 @@
 # Prerequisites
 *.d
+/.idea
+/.vscode
+/bin
+cub3D
 
 # Object files
 *.o
