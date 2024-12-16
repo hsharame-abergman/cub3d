@@ -6,7 +6,7 @@
 #    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2024/12/16 19:56:30 by abergman         ###   ########.fr        #
+#    Updated: 2024/12/16 20:14:06 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(OBJDIR)/%.o: ./%.c $(HEADERS)
 		$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(OBJDIR) $(HEADERS) $(OBJS)
-		$(CC)  $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS)
+		$(CC)  $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX_FLAGS)
 		@echo "\n$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): You can use './cub3D' for execute.\n"
 
 mlx:

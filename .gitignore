@@ -5,6 +5,8 @@
 /bin
 /mlx
 cub3D
+.nfs*
+*/.DS_Store
 
 # Object files
 *.o
