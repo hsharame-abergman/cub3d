@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2024/12/17 16:15:26 by hsharame         ###   ########.fr       */
+/*   Created: 2024/12/17 16:07:55 by hsharame          #+#    #+#             */
+/*   Updated: 2024/12/17 16:10:27 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header/cub3D.h"
+#include "../header/cub3D.h"
 
-int	main(int argc, char *argv[]) 
+void	ft_error_msg(char *str)
 {
-	int res;
-	int a;
-	t_data	data;
-
-	if (!check_argv(argc, argv[1]))
-		ft_error_msg("Incorrect input");
-	if (!init_data(&data))
-		ft_error_msg("Initialization failed");
-	if (!parsing(&data))
-		ft_error_msg("Parsing failed");
-	if (!execution(&data))
-		ft_error_msg("It's not ok");
-	res = printf("Hello World!\n");
-	return (0);
+	ft_putendl_fd("Error", 2);
+	ft_putchar_fd(str, 2);
+	exit(1);
 }
