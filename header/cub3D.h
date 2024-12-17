@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/17 16:38:38 by hsharame         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:33:41 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+//# include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdio.h>
+# include <stdbool.h>
+# include <stdlib.h>
+# include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <math.h>
 
 typedef struct	s_store {
 	void	*image;
@@ -26,19 +33,6 @@ typedef struct	s_store {
 	int		line_length;
 	int		endian;
 }				t_store;
-
-#define CUB3D_H
-
-# include "../libft/libft.h"
-//# include "../mlx/mlx.h"
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <math.h>
 
 typedef struct	s_map
 {
@@ -65,4 +59,5 @@ typedef struct	s_data
 bool    check_argv(int argc, char *filename);
 bool	check_extension(char *filename, char *extension);
 void	ft_error_msg(char *str);
+
 #endif
