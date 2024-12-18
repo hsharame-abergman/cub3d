@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/17 17:33:41 by hsharame         ###   ########.fr       */
+/*   Updated: 2024/12/18 13:25:00 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,33 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
-//# include "../mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <stdio.h>
+# include <fcntl.h>
+# include <math.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <stdlib.h>
+# include <sys/stat.h>
+# include <sys/types.h>
 # include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <math.h>
 
-typedef struct	s_store {
-	void	*image;
-	char	*address;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_store;
-
-typedef struct	s_map
+typedef struct s_map
 {
-	int		fd;
-	char	*filename;
-	int		height;
-	int		length;
+	int			fd;
+	char		*filename;
+	int			height;
+	int			length;
 }				t_map;
 
-typedef struct	s_player
+typedef struct s_player
 {
-	int x;
-	int y;
+	int			x;
+	int			y;
 }				t_player;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
@@ -56,8 +48,8 @@ typedef struct	s_data
 	t_player	player;
 }				t_data;
 
-bool    check_argv(int argc, char *filename);
-bool	check_extension(char *filename, char *extension);
-void	ft_error_msg(char *str);
+bool			check_argv(int argc, char *filename);
+bool			check_extension(char *filename, char *extension);
+void			ft_error_msg(char *str);
 
 #endif
