@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/18 13:25:00 by abergman         ###   ########.fr       */
+/*   Updated: 2024/12/24 16:09:13 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+//# include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
@@ -44,7 +44,8 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
-	t_map		map;
+	char		*filename;
+	t_map		*map;
 	t_player	player;
 }				t_data;
 

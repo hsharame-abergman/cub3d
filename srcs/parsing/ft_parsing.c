@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init.c                                          :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/24 16:09:09 by hsharame         ###   ########.fr       */
+/*   Created: 2024/12/24 15:29:48 by hsharame          #+#    #+#             */
+/*   Updated: 2024/12/24 15:59:09 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3D.h"
 
-t_map    *init_map(char *filename)
+bool    parsing(t_data data, char *file)
 {
-    t_map   *map;
     
-    map = malloc(sizeof(t_map));
-    if (!map)
-        return;
-    map->fd = open(filename, O_RDONLY);
-    if (map->fd < 0)
-        return;
-    return (map);
-}
-
-bool    init_data(t_data **data, char *file)
-{
-    *data = malloc(sizeof(t_data));
-    if (!*data)
-        retuen (false);
-    (*data)->filename = file;
-    (*data)->map = init_map((*data)->filename);
 }
