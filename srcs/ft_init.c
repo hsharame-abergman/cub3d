@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/31 11:52:09 by hsharame         ###   ########.fr       */
+/*   Updated: 2024/12/31 12:44:10 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_map    *init_map(char *filename)
     map->filename = filename;
     map->height = 0;
     map->length = 0;
+    map->c_color = NULL;
+    map->f_color = NULL;
     return (map);
 }
 

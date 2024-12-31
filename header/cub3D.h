@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/31 11:57:54 by hsharame         ###   ########.fr       */
+/*   Updated: 2024/12/31 12:43:01 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map
 	char		*filename;
 	int			height;
 	int			length;
+	char		**f_color;
+	char		**c_color;
 }				t_map;
 
 typedef struct s_player
