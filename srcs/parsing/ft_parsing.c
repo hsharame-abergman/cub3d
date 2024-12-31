@@ -6,13 +6,13 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 15:29:48 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/24 15:59:09 by hsharame         ###   ########.fr       */
+/*   Updated: 2024/12/31 11:58:39 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3D.h"
 
-bool    parsing(t_data data, char *file)
+bool    parsing(t_data *data)
 {
     
 }

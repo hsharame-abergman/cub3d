@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/24 16:09:09 by hsharame         ###   ########.fr       */
+/*   Updated: 2024/12/31 11:52:09 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,52 @@ t_map    *init_map(char *filename)
     
     map = malloc(sizeof(t_map));
     if (!map)
-        return;
+        return (NULL);
     map->fd = open(filename, O_RDONLY);
     if (map->fd < 0)
-        return;
+        return (NULL);
+    map->filename = filename;
+    map->height = 0;
+    map->length = 0;
     return (map);
 }
 
-bool    init_data(t_data **data, char *file)
+t_player    *init_player(void)
 {
-    *data = malloc(sizeof(t_data));
-    if (!*data)
-        retuen (false);
-    (*data)->filename = file;
-    (*data)->map = init_map((*data)->filename);
+    t_player    *player;
+    
+    player = malloc(sizeof(t_player));
+    if (!player)
+        return (NULL);
+    player->x = 0;
+    player->y = 0;
+    player->dir_x = 0;
+    player->dir_y = 0;
+    player->vector_x = 0;
+    player->vector_y = 0;
+    return (player);
+}
+
+t_ray   *init_ray(void)
+{
+    t_ray   *ray;
+
+    ray = malloc(sizeof(t_ray));
+    if (!ray)
+        return (NULL);
+    ray->dir_x = 0;
+    ray->dir_y = 0;
+}
+
+bool    init_data(t_data *data, char *file)
+{
+    data->mlx = mlx_init();
+    if (!data->mlx)
+        return (false);
+    data->mlx_win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
+    data->filename = file;
+    if ((data->map = init_map(data->filename)) == NULL)
+        return (false);
+    data->player = init_player();
+    data->ray = init_ray();
 }
