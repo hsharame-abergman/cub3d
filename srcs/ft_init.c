@@ -19,14 +19,14 @@ t_map    *init_map(char *filename)
     map = malloc(sizeof(t_map));
     if (!map)
         return (NULL);
-    map->fd = open(filename, O_RDONLY);
-    if (map->fd < 0)
-        return (NULL);
     map->filename = filename;
+    map->fd = 0;
     map->height = 0;
     map->length = 0;
-    map->c_color = NULL;
-    map->f_color = NULL;
+    map->c_color = 0;
+    map->f_color = 0;
+    map->initial_map = NULL;
+    map->map_grid = NULL;
     return (map);
 }
 
@@ -55,17 +55,17 @@ t_ray   *init_ray(void)
         return (NULL);
     ray->dir_x = 0;
     ray->dir_y = 0;
+    return (ray);
 }
 
 bool    init_data(t_data *data, char *file)
 {
-    data->mlx = mlx_init();
-    if (!data->mlx)
-        return (false);
-    data->mlx_win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
+    data->mlx = NULL;
+    //data->mlx_win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
     data->filename = file;
     if ((data->map = init_map(data->filename)) == NULL)
         return (false);
     data->player = init_player();
     data->ray = init_ray();
+    return (true);
 }

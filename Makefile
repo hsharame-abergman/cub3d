@@ -15,7 +15,7 @@ UNAME			= $(shell uname)
 
 CC				= @cc
 OBJDIR 			= bin
-SRC				:= $(shell find srcs/ -type f -name "*.c")
+SRC				:= $(shell find srcs/ get_next_line/ -type f -name "*.c")
 
 OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 
@@ -23,7 +23,7 @@ HEADERS 		= ./header/cub3D.h
 LIBFT			= ./libft/libft.a
 
 DEBUG			= -g3 -fsanitize=address,leak,undefined
-CFLAGS			= -Wall -Wextra -Werror -o3 $(DEBUG)
+CFLAGS			= -Wall -Wextra -Werror $(DEBUG)
 
 RM				= @rm -f
 

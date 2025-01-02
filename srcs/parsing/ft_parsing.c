@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/cub3D.h"
+#include "../../header/cub3D.h"
 
 bool    parsing(t_data *data)
 {
     if (!map_is_valid(data->map))
         free_exit(data, "The map is not valid");
+    return (true);
 }

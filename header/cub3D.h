@@ -14,7 +14,8 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
-//# include "../mlx/mlx.h"
+# include "../get_next_line/get_next_line.h"
+# include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
@@ -32,8 +33,14 @@ typedef struct s_map
 	char		*filename;
 	int			height;
 	int			length;
-	char		**f_color;
-	char		**c_color;
+	int			f_color;
+	int			c_color;
+	char		**initial_map;
+	char		**map_grid;
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
 }				t_map;
 
 typedef struct s_player
@@ -65,7 +72,14 @@ typedef struct s_data
 }				t_data;
 
 bool			check_argv(int argc, char *filename);
+bool   			init_data(t_data *data, char *file);
 bool			check_extension(char *filename, char *extension);
 void			ft_error_msg(char *str);
+void			free_exit(t_data *data, char *error);
+bool    		parsing(t_data *data);
+bool   			map_is_valid(t_map *map);
+bool    		extract_info(t_map *map);
+void			fill_copy_lines(t_map *map);
+int 			rgb_to_int(int r, int g, int b);
 
 #endif

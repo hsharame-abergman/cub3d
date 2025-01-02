@@ -14,7 +14,6 @@
 
 int	main(int argc, char *argv[])
 {
-	int		res;
 	int		length;
 	char	*str;
 	t_data	data;
@@ -25,10 +24,10 @@ int	main(int argc, char *argv[])
 	if (!init_data(&data, argv[1]))
 		free_exit(&data, "Initialization failed");
 	parsing(&data);
-	if (!execution(&data))
+	/*if (!execution(&data))
 		free_exit(&data, "It's not ok");
-	mlx_loop(data.mlx);
+	mlx_loop(data.mlx);*/
 	length = ft_strlen(str);
-	res = printf("%s, %d\n", str, length);
-	return (res);
+	//res = printf("%s, %d\n", str, length);
+	return (0);
 }

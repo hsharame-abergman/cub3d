@@ -14,13 +14,13 @@
 
 void	free_exit(t_data *data, char *error)
 {
-	if (data->mlx_win)
+/*	if (data->mlx_win)
 		mlx_destroy_window(data->mlx);
 	if (data->mlx)
 	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
-	}
+	}*/
 	if (data->map)
 		free(data->map);
 	if (data->player)
@@ -35,6 +35,6 @@ void	free_exit(t_data *data, char *error)
 void	ft_error_msg(char *str)
 {
 	ft_putendl_fd("Error", 2);
-	ft_putchar_fd(str, 2);
+	ft_putstr_fd(str, 2);
 	exit(1);
 }
