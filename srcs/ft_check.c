@@ -6,28 +6,28 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:14:32 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/17 15:45:33 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/03 19:00:11 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3D.h"
 
-bool    check_argv(int argc, char *filename)
+bool	check_argv(int argc, char *filename)
 {
-    int fd;
+	int	fd;
 
-    if (argc != 2)
-        return (false);
-    fd = open(filename, O_RDONLY);
-    if (fd < 0)
-        return (false);
-    close (fd);
-    if (!check_extension(filename, ".cub"))
-        return (false);
-    return (true);
+	if (argc != 2)
+		return (false);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (false);
+	close (fd);
+	if (!check_extension(filename, ".cub"))
+		return (false);
+	return (true);
 }
 
-bool    check_extension(char *filename, char *extension)
+bool	check_extension(char *filename, char *extension)
 {
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 12:40:58 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/02 18:20:36 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:57:59 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	fill_copy_lines(t_map *map)
 {
 	int		i;
 	char	*line;
-	int 	fd;
+	int		fd;
 
 	i = 0;
 	fd = open(map->filename, O_RDONLY);
@@ -26,7 +26,7 @@ void	fill_copy_lines(t_map *map)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		map->initial_map[i] = ft_strdup(line);
 		i++;
 		free(line);
@@ -35,9 +35,13 @@ void	fill_copy_lines(t_map *map)
 	close(fd);
 }
 
-bool    extract_info(t_map *map)
+/*
+	The function makes the copy of .cub file and stores it in the map
+	structure.
+*/
+bool	extract_info(t_map *map)
 {
-    char	*line;
+	char	*line;
 	int		i;
 	int		fd;
 
@@ -49,7 +53,7 @@ bool    extract_info(t_map *map)
 	{
 		line = get_next_line(fd);
 		if (line == NULL || line[0] == '\0')
-			break;
+			break ;
 		i++;
 		free(line);
 	}
@@ -61,14 +65,16 @@ bool    extract_info(t_map *map)
 	return (true);
 }
 
-bool    map_is_valid(t_map *map)
+bool	map_is_valid(t_data *data, t_map *map)
 {
-    if (!extract_info(map))
-        return (false);
-    if (!check_map_texture_colors(map))
-        return (false);
-    /*if (!check_map(map))
-        return (false);
+	if (!extract_info(map))
+		return (false);
+	if (!check_textures_colors(data, map))
+		return (false);
+	if (!find_grid(map, map->initial_map))
+		return (false);
+	/*if (!check_grid_map(map))
+		return (false);
     if (!check_map_player_positon(map))
         return (false);*/
 	else

@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2024/12/31 12:43:01 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:26:53 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 # include <sys/types.h>
 # include <unistd.h>
 
+typedef enum e_texture_type
+{
+	NORTH = 0,
+	SOUTH,
+	WEST,
+	EAST
+}			t_texture_type;
+
 typedef struct s_map
 {
 	int			fd;
@@ -35,12 +43,12 @@ typedef struct s_map
 	int			length;
 	int			f_color;
 	int			c_color;
+	int			rgb[3];
 	char		**initial_map;
 	char		**map_grid;
-	char		*north;
-	char		*south;
-	char		*west;
-	char		*east;
+	void		*textures[4];
+	int			texture_width;
+	int			texture_height;
 }				t_map;
 
 typedef struct s_player
@@ -66,9 +74,9 @@ typedef struct s_data
 	int			win_width;
 	int			win_height;
 	char		*filename;
-	t_map		*map;
 	t_player	*player;
 	t_ray		*ray;
+	t_map		*map;
 }				t_data;
 
 bool			check_argv(int argc, char *filename);
@@ -77,9 +85,14 @@ bool			check_extension(char *filename, char *extension);
 void			ft_error_msg(char *str);
 void			free_exit(t_data *data, char *error);
 bool    		parsing(t_data *data);
-bool   			map_is_valid(t_map *map);
+bool   			map_is_valid(t_data *data, t_map *map);
 bool    		extract_info(t_map *map);
 void			fill_copy_lines(t_map *map);
 int 			rgb_to_int(int r, int g, int b);
+bool			check_textures_colors(t_data *data, t_map *map);
+bool    		find_grid(t_map *map, char **dirty_map);
+bool			find_colors(t_map *map);
+void			free_tab(char **tab);
+bool			ft_isspace(char c);
 
 #endif
