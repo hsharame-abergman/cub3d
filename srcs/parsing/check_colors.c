@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:18:13 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/03 18:57:02 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:00:01 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	extract_color(t_map *map, char c, char *line)
 
 	i = 0;
 	separated = ft_split(line, ',');
-	if (!separated || !separated[0] || !separated[1] || !separated[2] 
+	if (!separated || !separated[0] || !separated[1] || !separated[2]
 		|| !check_values(separated))
 		return (free_tab(separated), false);
 	while (i <= 2)

@@ -5,86 +5,72 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 16:23:11 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/03 18:53:28 by hsharame         ###   ########.fr       */
+/*   Created: 2025/01/21 15:14:20 by hsharame          #+#    #+#             */
+/*   Updated: 2025/01/21 17:47:11 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-int	find_start(char **map)
+bool	check_size_map(t_map *map)
+{
+	if (map->height <= 2)
+		return (false);
+	return (true);
+}
+
+bool	check_walls(t_map *map)
+{
+	if (!check_top_bottom_walls(map->map_grid[0])
+		|| !check_top_bottom_walls(map->map_grid[map->height - 1]))
+		return (false);
+	if (!check_no_output(map->map_grid))
+		return (false);
+	return (true);
+}
+
+bool	check_other_char(char *line)
 {
 	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j] == ' ')
-			j++;
-		if (map[i][j] == '1')
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int	find_end(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map[i])
-		i++;
-	while (i-- >= 0)
-	{
-		j = 0;
-		while (map[i][j] == ' ')
-			j++;
-		if (map[i][j] == '1')
-			return (i);
-	}
-	return (-1);
-}
-
-char	**extract_map(char **dirty, int start, int end)
-	{
-	char	**map;
-	int		i;
-
-	i = 0;
-	if (start == -1 || end == -1 || start > end)
-		return (NULL);
-	map = malloc(sizeof(char *) * (end - start + 2));
-	if (!map)
-		return (NULL);
-	while (start <= end)
-	{
-		map[i] = ft_strdup(dirty[start]);
-		start++;
-		i++;
-	}
-	map[i] = NULL;
-	return (map);
-}
-
-/*
-    In the draft of a map, which also contains other information, such as
-    the color or the path to the textures, we find the description of the
-    map itself, we find the beginning and the end and we generate the clean
-    copy of the map.
-*/
-bool	find_grid(t_map *map, char **dirty_map)
-{
-	int	start;
 	int	end;
 
-	start = find_start(dirty_map);
-	end = find_end(dirty_map);
-	map->map_grid = extract_map(dirty_map, start, end);
-	if (!map->map_grid)
-		return (false);
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	end = ft_strlen(line) - 1;
+	while (line[end] == '\n' || line[end] == ' ')
+		end--;
+	while (i <= end)
+	{
+		if (line[i] != '1' && line[i] != '0'
+			&& !is_player(line[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+bool	check_player_other_char(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map->map_grid[i])
+	{
+		j = 0;
+		if ((i != 0 && i != map->height - 1)
+			&& !check_other_char(map->map_grid[i]))
+			return (false);
+		while (map->map_grid[i][j])
+		{
+			if (is_player(map->map_grid[i][j]) == 1)
+				map->player++;
+			if (map->player > 1)
+				return (false);
+			j++;
+		}
+		i++;
+	}
 	return (true);
 }
