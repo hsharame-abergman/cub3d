@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:31:03 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/21 18:12:23 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:43:11 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_execution(t_data *store)
 	if (ft_initialisation_minilibx(store))
 		return (ft_error_handler("initialisation minilibx is failed", 1), 1);
 	if (ft_initialisation_textures(store))
-		return ();
+		return (ft_error_handler("initialisation minilibx is failed", 1), 1);
 	(void)main;
 	result = 0;
 	return (0);
