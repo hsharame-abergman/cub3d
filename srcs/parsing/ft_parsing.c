@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 15:29:48 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/21 16:50:39 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:30:29 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,30 @@ bool	parsing(t_data *data)
 		return (false);
 	}
 	return (true);
+}
+
+void	affiche_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if (map->map_grid)
+	{
+		while (map->map_grid[i])
+		{
+			printf("%s", map->map_grid[i]);
+			i++;
+		}
+	}
+	i = 0;
+	if (map->initial_map)
+	{
+		while (map->initial_map[i])
+		{
+			printf("%s", map->initial_map[i]);
+			i++;
+		}
+	}
+	printf ("%#x\n", map->f_color);
+	printf ("%#x\n", map->c_color);
 }

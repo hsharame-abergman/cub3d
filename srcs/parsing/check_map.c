@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 12:40:58 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/21 14:57:42 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:23:13 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ bool	map_is_valid(t_data *data, t_map *map)
 		return (false);
 	if (!check_grid_map(map))
 		return (false);
-    /*if (!check_map_player_positon(map))
-        return (false);*/
 	else
 		return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/21 17:04:15 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:26:00 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ int	main(int argc, char *argv[])
 		ft_error_msg("Incorrect input");
 	if (!init_data(&data, argv[1]))
 		free_exit(&data, "Initialization failed");
-	parsing(&data);
+	if (!parsing(&data))
+		free_exit(&data, "It's not ok");
 	if (!ft_execution(&data))
 		free_exit(&data, "It's not ok");
-	mlx_loop(data.mlx);
+	//mlx_loop(data.mlx);
 	// length = ft_strlen(str);
 	//res = printf("%s, %d\n", str, length);
 	return (0);

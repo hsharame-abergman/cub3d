@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/03 19:03:37 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:09:47 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ t_map	*init_map(char *filename)
 	map->rgb[0] = 0;
 	map->rgb[1] = 0;
 	map->rgb[2] = 0;
-	map->texture_height = 0;
-	map->texture_width = 0;
-	map->textures[0] = NULL;
-	map->textures[1] = NULL;
-	map->textures[2] = NULL;
-	map->textures[3] = NULL;
 	return (map);
 }
 

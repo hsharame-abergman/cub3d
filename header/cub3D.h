@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2025/01/21 16:31:34 by hsharame         ###   ########.fr       */
-=======
-/*   Updated: 2025/01/21 17:10:41 by abergman         ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2025/01/22 15:14:10 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +26,7 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
+# include "../header/execution.h"
 
 typedef enum e_texture_type
 {
@@ -51,9 +48,6 @@ typedef struct s_map
 	char		**initial_map;
 	char		**map_grid;
 	int			player;
-	void		*textures[4];
-	int			texture_width;
-	int			texture_height;
 }				t_map;
 
 typedef struct s_player
@@ -82,20 +76,24 @@ typedef struct s_data
 	t_player	*player;
 	t_ray		*ray;
 	t_map		*map;
+	t_texture	*north;
+	t_texture	*south;
+	t_texture	*west;
+	t_texture	*east;
 }				t_data;
 
 bool			check_argv(int argc, char *filename);
-bool   			init_data(t_data *data, char *file);
+bool			init_data(t_data *data, char *file);
 bool			check_extension(char *filename, char *extension);
 void			ft_error_msg(char *str);
 void			free_exit(t_data *data, char *error);
-bool    		parsing(t_data *data);
-bool   			map_is_valid(t_data *data, t_map *map);
-bool    		extract_info(t_map *map);
+bool			parsing(t_data *data);
+bool			map_is_valid(t_data *data, t_map *map);
+bool			extract_info(t_map *map);
 void			fill_copy_lines(t_map *map);
-int 			rgb_to_int(int r, int g, int b);
+int				rgb_to_int(int r, int g, int b);
 bool			check_textures_colors(t_data *data, t_map *map);
-bool    		find_grid(t_map *map, char **dirty_map);
+bool			find_grid(t_map *map, char **dirty_map);
 bool			find_colors(t_map *map);
 void			free_tab(char **tab);
 bool			ft_isspace(char c);
