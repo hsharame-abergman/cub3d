@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:31:03 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/22 13:43:11 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/24 19:19:36 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@ int	ft_execution(t_data *store)
 	int			result;
 	t_texture	main;
 
+	result = 0;
 	if (ft_initialisation_minilibx(store))
 		return (ft_error_handler("initialisation minilibx is failed", 1), 1);
 	if (ft_initialisation_textures(store))
 		return (ft_error_handler("initialisation minilibx is failed", 1), 1);
-	(void)main;
-	result = 0;
-	return (0);
+	if (ft_initialisation_window(store))
+		return (ft_error_handler("initialisation window is faled", 1), 1);
+	if (ft_initialisation_main_image(store, &main));
+		return (ft_error_handler("Main image not installed, fatal error", 1), 1);
+	store->map->main = &main;
+	ft_render_floor(store);
+	ft_render_frame(store);
+	mlx_put_image_to_window(store->mlx, store->mlx_win, main.image, 0, 0);
+	mlx_hook(store->mlx_win, 2, 1L << 0, ft_keypress_handler, store);
+	mlx_hook(store->mlx_win, 17, 1L << 4, ft_destroy_handler, store);
+	mlx_loop(store->mlx_win);
+	return (result);
 }

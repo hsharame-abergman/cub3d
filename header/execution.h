@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 13:27:16 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/22 15:16:22 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/24 19:15:29 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_raycasting
 typedef struct s_texture
 {
 	char	*path;
+	void	*image;
 }			t_texture;
 
 int			ft_execution(t_data *data);
