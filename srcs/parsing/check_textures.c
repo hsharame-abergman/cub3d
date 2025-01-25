@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/22 15:20:12 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:47:09 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-bool	valide_texture(t_data *data, t_map *map, char *line)
+bool	valide_texture(t_data *data, char *line)
 {
 	char	**separated;
 
@@ -41,7 +41,7 @@ bool	find_textures(t_data *data, t_map *map)
 	textures = 0;
 	while (map->initial_map[i])
 	{
-		if (valide_texture(data, map, map->initial_map[i]))
+		if (valide_texture(data, map->initial_map[i]))
 			textures++;
 		i++;
 	}

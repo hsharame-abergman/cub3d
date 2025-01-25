@@ -6,12 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 17:58:17 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/25 18:01:44 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:43:17 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
-#include "../../header/execution.h"
 
 int	ft_initialisation_window(t_data *data)
 {

@@ -6,15 +6,15 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/24 19:07:49 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:22:30 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
+# include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -26,7 +26,6 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <unistd.h>
-# include "../header/execution.h"
 
 typedef enum e_texture_type
 {
@@ -34,7 +33,19 @@ typedef enum e_texture_type
 	SOUTH,
 	WEST,
 	EAST
-}			t_texture_type;
+}				t_texture_type;
+
+typedef struct s_texture
+{
+	char		*path;
+	void		*image;
+	int			bits_per_pixel;
+	char		*address;
+	int			width;
+	int			height;
+	int			line_lenght;
+	int			endian;
+}				t_texture;
 
 typedef struct s_map
 {
@@ -83,6 +94,27 @@ typedef struct s_data
 	t_texture	*east;
 }				t_data;
 
+# define WIDTH_TEXTURE 10000;
+# define HEIGHT_TEXTURE 10000;
+
+typedef struct s_raycasting
+{
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+}				t_raycasting;
+
+t_texture		*ft_init_texture(void);
+int				ft_execution(t_data *store);
+int				ft_error_handler(char *str, int res);
+int				ft_initialisation_minilibx(t_data *store);
+int				ft_initialisation_textures(t_data *store);
+int				ft_initialisation_window(t_data *data);
+int				ft_keypress_handler(int keynum, t_data *data);
+
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);
 bool			check_extension(char *filename, char *extension);
@@ -98,5 +130,12 @@ bool			find_grid(t_map *map, char **dirty_map);
 bool			find_colors(t_map *map);
 void			free_tab(char **tab);
 bool			ft_isspace(char c);
+bool			check_top_bottom_walls(char *str);
+bool			check_no_output(char **map);
+int				is_player(int c);
+bool			check_grid_map(t_map *map);
+bool			check_size_map(t_map *map);
+bool			check_walls(t_map *map);
+bool			check_player_other_char(t_map *map);
 
 #endif
