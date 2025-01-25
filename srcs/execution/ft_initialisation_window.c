@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_initialisation_minilibx.c                       :+:      :+:    :+:   */
+/*   ft_initialisation_window.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 17:29:05 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/25 18:02:59 by abergman         ###   ########.fr       */
+/*   Created: 2025/01/25 17:58:17 by abergman          #+#    #+#             */
+/*   Updated: 2025/01/25 18:01:44 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 #include "../../header/execution.h"
 
-int ft_initialisation_minilibx(t_data *store)
+int	ft_initialisation_window(t_data *data)
 {
-    store->mlx = mlx_init();
-    if (!store->mlx)
-        ft_error_handler("miniLibX can't initialised", 1);
-    store->win_height = 1200;
-    store->win_width = 1600;
-    store->mlx_win = NULL;
+	data->mlx_win = mlx_new_window(data->mlx, data->win_width, data->win_height,
+			"cub3D");
+	if (!data->mlx_win)
+		return (ft_error_handler("Windows not created", 1), 1);
     return (0);
 }
