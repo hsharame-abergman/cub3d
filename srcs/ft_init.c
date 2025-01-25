@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/22 15:09:47 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/01/25 19:11:48 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,9 @@ bool	init_data(t_data *data, char *file)
 		return (false);
 	data->player = init_player();
 	data->ray = init_ray();
+	data->east = ft_init_texture();
+	data->north = ft_init_texture();
+	data->west = ft_init_texture();
+	data->south = ft_init_texture();
 	return (true);
 }
