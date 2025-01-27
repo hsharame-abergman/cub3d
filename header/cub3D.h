@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/25 23:22:30 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:38:29 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_texture
 	char		*address;
 	int			width;
 	int			height;
-	int			line_lenght;
+	int			line_length;
 	int			endian;
 }				t_texture;
 
@@ -114,6 +114,7 @@ int				ft_initialisation_minilibx(t_data *store);
 int				ft_initialisation_textures(t_data *store);
 int				ft_initialisation_window(t_data *data);
 int				ft_keypress_handler(int keynum, t_data *data);
+int				ft_initialisation_main_texture(t_data *store, t_texture *main);
 
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);

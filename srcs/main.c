@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/25 23:08:47 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:19:52 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	main(int argc, char *argv[])
 {
 	// int		length;
-	char	*str;
 	t_data	data;
 
-	str = "Hello World!";
 	if (!check_argv(argc, argv[1]))
 		ft_error_msg("Incorrect input");
 	if (!init_data(&data, argv[1]))
