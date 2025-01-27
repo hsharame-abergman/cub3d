@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 15:29:48 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/25 22:46:25 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:56:57 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	affiche_map(t_map *map)
 			i++;
 		}
 	}
-	printf ("%#x\n", map->f_color);
-	printf ("%#x\n", map->c_color);
+	printf("%#x\n", map->f_color);
+	printf("%#x\n", map->c_color);
 }
