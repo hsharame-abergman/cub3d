@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/27 17:56:57 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:54:09 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_map
 	char		*filename;
 	int			height;
 	int			length;
-	int			f_color;
-	int			c_color;
+	int			**f_color;
+	int			**c_color;
 	int			rgb[3];
 	char		**initial_map;
 	char		**map_grid;
@@ -74,8 +74,12 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	double		pos_x;
+	double		pos_y;
 	double		dir_x;
 	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 }				t_ray;
 
 typedef struct s_data
@@ -97,16 +101,6 @@ typedef struct s_data
 # define WIDTH_TEXTURE 10000;
 # define HEIGHT_TEXTURE 10000;
 
-typedef struct s_raycasting
-{
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
-}				t_raycasting;
-
 t_texture		*ft_init_texture(void);
 int				ft_execution(t_data *store);
 int				ft_error_handler(char *str, int res);
@@ -115,6 +109,12 @@ int				ft_initialisation_textures(t_data *store);
 int				ft_initialisation_window(t_data *data);
 int				ft_keypress_handler(int keynum, t_data *data);
 int				ft_initialisation_main_texture(t_data *store, t_texture *main);
+void			ft_destroy_handler(t_data *data);
+void			ft_clear_window(t_data *store, t_texture *main);
+void			ft_move_player(t_data *data, int keynum);
+void			ft_move_camera(t_data *store, int keynum);
+void			ft_render_frame(t_data *store);
+void			ft_render_floor(t_data *store);
 
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);

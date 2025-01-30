@@ -6,29 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:31:03 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/27 17:38:55 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:44:44 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
-
-int	ft_clear(t_data *store)
-{
-	(void)store;
-	return (0);
-}
-
-void		ft_clear_window(t_data *store);
-void		ft_render_floor(t_data *store);
-void		ft_render_frame(t_data *store);
-void		ft_move_player(t_data *store, int keynum);
-void		ft_move_camera(t_data *store, int keynum);
-
-static int	ft_destroy_handler(t_data *data)
-{
-	ft_clear(data);
-	exit(1);
-}
 
 int	ft_execution(t_data *store)
 {

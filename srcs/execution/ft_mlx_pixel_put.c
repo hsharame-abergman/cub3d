@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_keypress_handler.c                              :+:      :+:    :+:   */
+/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/27 20:23:38 by abergman         ###   ########.fr       */
+/*   Created: 2025/01/30 15:27:51 by abergman          #+#    #+#             */
+/*   Updated: 2025/01/30 15:35:13 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-int	ft_keypress_handler(int keynum, t_data *data)
+void ft_mlx_pixel_put(int x, int y, t_texture *texture, int color_bin)
 {
-	if (keynum == 53 || keynum == 65307)
-		ft_destroy_handler(data);
-	ft_clear_window(data, data->map->main);
-	ft_move_player(data, keynum);
-	ft_move_camera(data, keynum);
-	ft_render_frame(data);
-	return (keynum);
+    char *response;
+    
+    response = texture->address + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+    *(unsigned int *)response = color_bin;
 }
