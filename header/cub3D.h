@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/28 15:54:09 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:50:39 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_map
 	char		*filename;
 	int			height;
 	int			length;
-	int			**f_color;
-	int			**c_color;
+	int			f_color;
+	int			c_color;
 	int			rgb[3];
 	char		**initial_map;
 	char		**map_grid;
@@ -115,6 +115,8 @@ void			ft_move_player(t_data *data, int keynum);
 void			ft_move_camera(t_data *store, int keynum);
 void			ft_render_frame(t_data *store);
 void			ft_render_floor(t_data *store);
+void			ft_mlx_pixel_put(int x, int y, t_texture *texture,
+					int color_bin);
 
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);
@@ -138,5 +140,6 @@ bool			check_grid_map(t_map *map);
 bool			check_size_map(t_map *map);
 bool			check_walls(t_map *map);
 bool			check_player_other_char(t_map *map);
+int				rgb_to_int(int r, int g, int b);
 
 #endif

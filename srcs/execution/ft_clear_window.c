@@ -6,13 +6,13 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:18:43 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/27 20:22:17 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:08:58 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-static	ft_mlx_pixel_put(t_texture *texture, int x, int y, int color)
+void	ft_mlx_pixel_put(int x, int y, t_texture *texture, int color)
 {
 	char	*dst;
 
@@ -32,7 +32,7 @@ void	ft_clear_window(t_data *store, t_texture *main)
 		y = 0;
 		while (y < store->win_height)
 		{
-			ft_mlx_pixel_put(store->map->main, x, y, 0x000000);
+			ft_mlx_pixel_put(x, y, store->map->main, 0x000000);
 			y++;
 		}
 		x++;
