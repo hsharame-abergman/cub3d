@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/25 19:11:48 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/31 22:38:47 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_ray	*init_ray(void)
 	ray = malloc(sizeof(t_ray));
 	if (!ray)
 		return (NULL);
-	ray->dir_x = 0;
-	ray->dir_y = 0;
+	ray->ray_dir_x = 0;
+	ray->ray_dir_y = 0;
 	return (ray);
 }
 
