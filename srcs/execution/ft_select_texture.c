@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render_frame.c                                  :+:      :+:    :+:   */
+/*   ft_select_texture.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 20:47:38 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/31 17:30:28 by abergman         ###   ########.fr       */
+/*   Created: 2025/01/31 17:36:38 by abergman          #+#    #+#             */
+/*   Updated: 2025/01/31 19:09:44 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-void	ft_raycasting(t_data *store, t_ray *ray, int x)
+t_texture *ft_select_texture(t_data *store, t_ray *ray)
 {
-	(void)store;
-	(void)ray;
-	(void)x;
-}
-
-void	ft_render_frame(t_data *store)
-{
-	int		x;
-	t_ray	ray;
-
-	x = 0;
-	ft_render_floor(store);
-	while (x < store->win_width)
-	{
-		ft_raycasting(store, &ray, x);
-		ft_render_column(store, &ray, x);
-		x++;
-	}
-	mlx_put_image_to_window(store->mlx, store->mlx_win, store->map->main->image,
-		0, 0);
+    if (ray->side == 0)
+    {
+        if (ray->dir_x > 0)
+            return (store->west);
+        else
+            return (store->east);
+    }
+    else
+    {
+        if (ray->dir_y > 0)
+            return (store->north);
+        else
+            return (store->south);
+    }
 }

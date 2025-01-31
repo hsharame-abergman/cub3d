@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/30 15:50:39 by abergman         ###   ########.fr       */
+/*   Updated: 2025/01/31 19:04:50 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct s_ray
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
+	int			draw_start;
+	int			line_height;
+	int			side;
 }				t_ray;
 
 typedef struct s_data
@@ -109,7 +112,7 @@ int				ft_initialisation_textures(t_data *store);
 int				ft_initialisation_window(t_data *data);
 int				ft_keypress_handler(int keynum, t_data *data);
 int				ft_initialisation_main_texture(t_data *store, t_texture *main);
-void			ft_destroy_handler(t_data *data);
+int				ft_destroy_handler(t_data *data);
 void			ft_clear_window(t_data *store, t_texture *main);
 void			ft_move_player(t_data *data, int keynum);
 void			ft_move_camera(t_data *store, int keynum);
@@ -117,6 +120,9 @@ void			ft_render_frame(t_data *store);
 void			ft_render_floor(t_data *store);
 void			ft_mlx_pixel_put(int x, int y, t_texture *texture,
 					int color_bin);
+void			ft_render_column(t_data *store, t_ray *ray, int x);
+void			ft_raycasting(t_data *store, t_ray *ray, int x);
+t_texture		*ft_select_texture(t_data *store, t_ray *ray);
 
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);
