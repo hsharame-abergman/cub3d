@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:27:51 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/30 15:41:09 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:30:54 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void ft_mlx_pixel_put(int x, int y, t_texture *texture, int color_bin)
 {
-    char *response;
+    char *pixel_address;
     
-    response = texture->address + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
-    *(unsigned int *)response = color_bin;
+    pixel_address = texture->address + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+    *(unsigned int *)pixel_address = color_bin;
 }

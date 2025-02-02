@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/25 22:47:09 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:38:13 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,23 @@ bool	find_textures(t_data *data, t_map *map)
 			textures++;
 		i++;
 	}
-	if (textures != 4 || !data->north || !data->south
-		|| !data->west || !data->east)
+	if (!data->north->path || !data->south->path
+		|| !data->west->path || !data->east->path)
 		return (false);
 	return (true);
 }
 
 bool	check_textures_colors(t_data *data, t_map *map)
 {
-	if (!find_textures(data, map) || !find_colors(map))
+	(void)data;
+/* 	if (!find_textures(data, map))
 	{
-		ft_putstr_fd("Invalid colors or textures\n", 2);
+		ft_putstr_fd("Invalid textures\n", 2);
+		return (false);
+	} */
+	if (!find_colors(map))
+	{
+		ft_putstr_fd("Invalid colors\n", 2);
 		return (false);
 	}
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:07:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/27 18:13:46 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:21:19 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_free_main_texture(t_data *data)
 {
-	if (data->map->main->image)
-		mlx_destroy_image(data->mlx, data->map->main->image);
+/* 	if (data->map->main->image)
+		mlx_destroy_image(data->mlx, data->map->main->image); */
 	free(data->map->main->image);
 	free(data->map->main);
 	data->map->main->image = NULL;

@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/31 22:35:05 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:47:16 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ typedef struct s_map
 	char		**map_grid;
 	int			player;
 	t_texture	*main;
+	int			map_height; // height of the map
+	int			longest_str; // length of the longest string in the map
 }				t_map;
 
 typedef struct s_player
@@ -131,6 +133,8 @@ void			ft_mlx_pixel_put(int x, int y, t_texture *texture,
 void			ft_render_column(t_data *store, t_ray *ray, int x);
 void			ft_raycasting(t_data *store, t_ray *ray, int x);
 t_texture		*ft_select_texture(t_data *store, t_ray *ray);
+int				ft_create_mock(t_data *store);
+void			ft_ray_casting(t_data *store, t_ray *ray, int x);
 
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);

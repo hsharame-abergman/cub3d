@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:44:07 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/31 17:31:11 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:29:12 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	ft_render_floor(t_data *store)
 {
     int x;
     int y;
-    int celing_color;
-    int floor_color;
 
-    (void)celing_color;
-    (void)floor_color;
     y = 0;
     while(y < store->win_height)
     {

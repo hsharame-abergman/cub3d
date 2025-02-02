@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:12:05 by abergman          #+#    #+#             */
-/*   Updated: 2025/01/31 22:40:33 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:09:29 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	ft_calculate_texture_y(int y, int line_height, t_texture *texture,
 unsigned int	ft_calculate_texture_color(t_texture *texture, int x_texture,
 		int y_texture)
 {
-	char	*pixel;
-	int		color;
+	char			*pixel;
+	unsigned int	color;
 
 	pixel = texture->address + (y_texture * texture->line_length + x_texture
 			* (texture->bits_per_pixel / 8));
