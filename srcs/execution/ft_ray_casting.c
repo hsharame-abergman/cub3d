@@ -6,44 +6,32 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:33:15 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/02 16:09:05 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:24:02 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
+double	ft_fabs(double num)
+{
+	if (num < 0)
+		return (-num);
+	return (num);
+}
+
 void	ft_initialisation_ray(t_ray *ray, t_player *player, int x,
 		int win_width)
 {
-	ray->ray_dir_x = player->dir_x + player->vector_x * (2 * x
-			/ (double)win_width - 1);
-	ray->ray_dir_y = player->dir_y + player->vector_y * (2 * x
-			/ (double)win_width - 1);
+	double	camera_x;
+
+	camera_x = 2 * x / (double)win_width - 1;
+	ray->ray_dir_x = player->dir_x + player->vector_x * camera_x;
+	ray->ray_dir_y = player->dir_y + player->vector_y * camera_x;
 	ray->map_x = (int)player->x;
 	ray->map_y = (int)player->y;
-	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+	ray->delta_dist_x = ft_fabs(1 / ray->ray_dir_x);
+	ray->delta_dist_y = ft_fabs(1 / ray->ray_dir_y);
 	ray->hit = 0;
-	if (ray->ray_dir_x < 0)
-	{
-		ray->step_x = -1;
-		ray->side_dist_x = (player->x - ray->map_x) * ray->delta_dist_x;
-	}
-	else
-	{
-		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - player->x) * ray->delta_dist_x;
-	}
-	if (ray->ray_dir_y < 0)
-	{
-		ray->step_y = -1;
-		ray->side_dist_y = (player->y - ray->map_y) * ray->delta_dist_y;
-	}
-	else
-	{
-		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - player->y) * ray->delta_dist_y;
-	}
 }
 
 void	ft_calculate_step_and_side_dist(t_ray *ray, t_player *player)

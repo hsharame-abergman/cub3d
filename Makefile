@@ -6,7 +6,7 @@
 #    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/01/25 22:41:15 by abergman         ###   ########.fr        #
+#    Updated: 2025/02/02 21:07:42 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,14 @@ OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 HEADERS 		= ./header/cub3D.h
 LIBFT			= ./libft/libft.a
 
-DEBUG			= -g3 -fsanitize=address,leak,undefined
-CFLAGS			= -Wall -Wextra -Werror $(DEBUG)
+DEBUG			= -fsanitize=address,leak,undefined
+CFLAGS			= -Wall -Wextra -Werror -g3
 
 RM				= @rm -f
 
 MLX_DIR			= ./mlx
 MLX_LIB			= $(MLX_DIR)/libmlx_$(UNAME).a
-MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 all: $(MLX_LIB) $(NAME)
 

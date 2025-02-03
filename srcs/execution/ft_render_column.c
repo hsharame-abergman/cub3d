@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:12:05 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/02 15:09:29 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:25:44 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_render_column(t_data *store, t_ray *ray, int x)
 	texture = ft_select_texture(store, ray);
 	x_texture = ft_calculate_texture_x(store, ray, texture);
 	y = ray->draw_start;
-	while (x < ray->draw_start)
+	while (y <= ray->draw_end)
 	{
 		y_texture = ft_calculate_texture_y(y, ray->line_height, texture, store);
 		color = ft_calculate_texture_color(texture, x_texture, y_texture);

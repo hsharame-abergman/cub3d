@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/31 22:38:47 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/02 20:42:25 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ bool	init_data(t_data *data, char *file)
 	data->map = init_map(data->filename);
 	if (!data->map)
 		return (false);
-	data->player = init_player();
 	data->ray = init_ray();
 	data->east = ft_init_texture();
 	data->north = ft_init_texture();

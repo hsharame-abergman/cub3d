@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:44:07 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/02 15:29:12 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 00:37:42 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_render_floor(t_data *store)
         while (x < store->win_width)
         {
             if (y < store->win_height / 2)
-                ft_mlx_pixel_put(x, y, store->map->main, store->map->c_color);
+                ft_mlx_pixel_put(x, y, store->main, store->map->c_color);
             else
-                ft_mlx_pixel_put(x, y, store->map->main, store->map->f_color);
+                ft_mlx_pixel_put(x, y, store->main, store->map->f_color);
             x++;
         }
         y++;

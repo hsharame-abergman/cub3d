@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/02 18:47:16 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:39:06 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ typedef struct s_map
 	char		**initial_map;
 	char		**map_grid;
 	int			player;
-	t_texture	*main;
-	int			map_height; // height of the map
-	int			longest_str; // length of the longest string in the map
+	int map_height;  // height of the map
+	size_t longest_str; // length of the longest string in the map
 }				t_map;
 
 typedef struct s_player
@@ -109,10 +108,11 @@ typedef struct s_data
 	t_texture	*south;
 	t_texture	*west;
 	t_texture	*east;
+	t_texture	*main;
 }				t_data;
 
-# define WIDTH_TEXTURE 10000;
-# define HEIGHT_TEXTURE 10000;
+# define WIDTH_TEXTURE 64;
+# define HEIGHT_TEXTURE 64;
 
 t_texture		*ft_init_texture(void);
 int				ft_execution(t_data *store);
@@ -131,7 +131,7 @@ void			ft_render_floor(t_data *store);
 void			ft_mlx_pixel_put(int x, int y, t_texture *texture,
 					int color_bin);
 void			ft_render_column(t_data *store, t_ray *ray, int x);
-void			ft_raycasting(t_data *store, t_ray *ray, int x);
+int				ft_initialisation_player(t_data *store, char *str, int y);
 t_texture		*ft_select_texture(t_data *store, t_ray *ray);
 int				ft_create_mock(t_data *store);
 void			ft_ray_casting(t_data *store, t_ray *ray, int x);

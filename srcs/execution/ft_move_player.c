@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:24:32 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/02 18:48:08 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:12:20 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	ft_move_forward(t_player *player, t_map *map)
 	{
 		if (map->map_grid[(int)player->y][(int)new_x] == '0')
 		{
-			player->x += player->dir_x * 0.01;
+			player->x += player->dir_x * 0.05;
 		}
 		if (map->map_grid[(int)new_y][(int)player->x] == '0')
 		{
-			player->y += player->dir_y * 0.01;
+			player->y += player->dir_y * 0.05;
 		}
 	}
 }
