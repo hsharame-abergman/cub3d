@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/03 11:27:19 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:42:15 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	main(int argc, char *argv[])
 	if (!parsing(&data))
 		ft_putstr_fd("Parsing failed\n", 2);
 			
-	/*ft_create_mock(&data);
+	//ft_create_mock(&data);
 	
 	if (ft_execution(&data))
-		free_exit(&data, "It's not ok");*/
+		free_exit(&data, "It's not ok");
 	return (0);
 }

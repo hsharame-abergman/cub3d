@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:23:11 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 12:47:56 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:04:51 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,26 @@ void	display_grid(char **grid)
 	}
 }
 
+int	find_longest_line(char **map)
+{
+	int	i;
+	int	j;
+	int	longest;
+
+	i = 0;
+	longest = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j] && map[i][j] != '\n')
+			j++;
+		if (j > longest)
+			longest = j;
+		i++;
+	}
+	return (longest);
+}
+
 /*
     In the draft of a map, which also contains other information, such as
     the color or the path to the textures, we find the description of the
@@ -112,6 +132,7 @@ bool	find_grid(t_map *map, char **dirty_map)
 	map->map_grid = extract_map(dirty_map, start, end);
 	if (!map->map_grid)
 		return (false);
+	map->length = find_longest_line(map->map_grid);
 	display_grid(map->map_grid);
 	return (true);
 }

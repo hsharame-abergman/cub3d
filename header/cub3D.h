@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 01:39:06 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:43:32 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ t_texture		*ft_select_texture(t_data *store, t_ray *ray);
 int				ft_create_mock(t_data *store);
 void			ft_ray_casting(t_data *store, t_ray *ray, int x);
 
+void			find_player(t_data *data, t_map *map);
 bool			check_argv(int argc, char *filename);
 bool			init_data(t_data *data, char *file);
 bool			check_extension(char *filename, char *extension);
@@ -159,5 +160,7 @@ bool			check_size_map(t_map *map);
 bool			check_walls(t_map *map);
 bool			check_player_other_char(t_map *map);
 int				rgb_to_int(int r, int g, int b);
+
+t_player		*init_player(void);
 
 #endif
