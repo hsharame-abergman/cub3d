@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_grid.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:14:20 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/02 20:47:26 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:20:54 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool	check_other_char(char *line)
 	while (i <= end)
 	{
 		if (line[i] != '1' && line[i] != '0'
-			&& !is_player(line[i]))
+			&& !is_player(line[i]) && line[i] != ' ')
 			return (false);
 		i++;
 	}
