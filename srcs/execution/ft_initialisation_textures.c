@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 20:44:39 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:36:32 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,15 @@ int	ft_initialisation_textures(t_data *store)
 	h = 10000;
 	if (store->north)
 		if (ft_initialisation_north_texture(store, h, w))
-			return (ft_error_handler("north texture can't loaded", 1), 1);
+			return (ft_error_msg("north texture can't loaded"), 1);
 	if (store->east)
 		if (ft_initialisation_east_texture(store, h, w))
-			return (ft_error_handler("east texture can't loaded", 1), 1);
+			return (ft_error_msg("east texture can't loaded"), 1);
 	if (store->south)
 		if (ft_initialisation_south_texture(store, h, w))
-			return (ft_error_handler("south texture can't loaded", 1), 1);
+			return (ft_error_msg("south texture can't loaded"), 1);
 	if (store->west)
 		if (ft_initialisation_west_texture(store, h, w))
-			return (ft_error_handler("west texture can't loaded", 1), 1);
+			return (ft_error_msg("west texture can't loaded"), 1);
 	return (0);
 }

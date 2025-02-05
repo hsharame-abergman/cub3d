@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 21:05:11 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:36:45 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ typedef struct s_data
 
 t_texture		*ft_init_texture(void);
 char			*ft_remove_newline(char *str);
-int				ft_error_handler(char *str, int res);
 int				ft_initialisation_textures(t_data *store);
 int				ft_keypress_handler(int keynum, t_data *data);
 int				ft_initialisation_main_texture(t_data *store);
