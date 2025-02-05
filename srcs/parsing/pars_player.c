@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:15:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/04 23:22:32 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:43:26 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	find_player(t_data *data, t_map *map)
 	int	y;
 
 	y = 0;
-	data->player = init_player();
 	while (map->map_grid[y])
 	{
 		x = 0;

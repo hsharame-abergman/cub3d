@@ -6,7 +6,7 @@
 #    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/05 01:48:04 by abergman         ###   ########.fr        #
+#    Updated: 2025/02/05 21:18:38 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 HEADERS 		= ./header/cub3D.h
 LIBFT			= ./libft/libft.a
 
-DEBUG			= -fsanitize=address,leak,undefined
-CFLAGS			= -Wall -Wextra -Werror -g3
+FSANITAIZE		= -fsanitize=address,leak,undefined
+DEBUG			= -g3
+CFLAGS			= -Wall -Wextra -Werror $(DEBUG)
 
 RM				= @rm -f
 

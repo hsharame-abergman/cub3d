@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 16:24:14 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:15:40 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	ft_draw_texture(t_data *store, int x)
 	y = store->ray->start - 1;
 	while (++y <= store->ray->end)
 	{
+		if (y < 0 || y >= HEIGHT)
+			continue ;
+		if (isnan(store->draw->texpos) || isinf(store->draw->texpos))
+			store->draw->texpos = 0.0;
+		store->draw->texy = ((int)store->draw->texpos) & (HEIGHT_TEXTURE - 1);
 		store->draw->texy = (int)store->draw->texpos & (HEIGHT_TEXTURE - 1);
 		store->draw->texpos += store->draw->step;
 		if (store->ray->side == 0)

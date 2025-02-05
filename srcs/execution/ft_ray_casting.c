@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:33:15 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 01:59:45 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:16:37 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,26 @@ void	ft_calculate_step(t_data *store)
 
 void	ft_calculate_distance(t_data *store)
 {
+	double	dist;
+
+	if (store->ray->raydir_x == 0.0f)
+		store->ray->raydir_x = 0.0001f;
+	if (store->ray->raydir_y == 0.0f)
+		store->ray->raydir_y = 0.0001f;
 	if (store->ray->side == 0 || store->ray->side == 1)
-		store->ray->walldist = (store->ray->map_x - store->player->x + (1
-					- store->ray->step_x) / 2) / store->ray->raydir_x;
+	{
+		dist = (store->ray->map_x - store->player->x + (1 - store->ray->step_x)
+				/ 2) / store->ray->raydir_x;
+		store->ray->walldist = fabs(dist);
+	}
 	else
-		store->ray->walldist = (store->ray->map_y - store->player->y + (1
-					- store->ray->step_y) / 2) / store->ray->raydir_y;
+	{
+		dist = (store->ray->map_y - store->player->y + (1 - store->ray->step_y)
+				/ 2) / store->ray->raydir_y;
+		store->ray->walldist = fabs(dist);
+	}
+	if (store->ray->walldist < 0.0001f)
+		store->ray->walldist = 0.0001f;
 }
 
 void	ft_dda(t_data *store)
@@ -94,11 +108,31 @@ void	ft_dda(t_data *store)
 
 void	ft_calculate_stripe(t_data *store)
 {
-	store->draw->lineh = (int)(HEIGHT / store->ray->walldist);
-	store->ray->start = -store->draw->lineh / 2 + HEIGHT / 2;
+	double	line_height;
+
+	// Check for valid walldist to prevent division by zero/infinity
+	if (store->ray->walldist <= 0.0001f)
+	{
+		store->ray->walldist = 0.0001f;
+	}
+	// Use double for intermediate calculations
+	line_height = (double)HEIGHT / store->ray->walldist;
+	// Clamp line height to prevent overflow
+	if (isinf(line_height) || line_height > INT_MAX)
+	{
+		store->draw->lineh = HEIGHT;
+	}
+	else
+	{
+		store->draw->lineh = (int)line_height;
+		if (store->draw->lineh > HEIGHT)
+			store->draw->lineh = HEIGHT;
+	}
+	// Use intermediate calculations to prevent overflow
+	store->ray->start = (HEIGHT / 2) - (store->draw->lineh / 2);
 	if (store->ray->start < 0)
 		store->ray->start = 0;
-	store->ray->end = store->draw->lineh / 2 + HEIGHT / 2;
+	store->ray->end = (HEIGHT / 2) + (store->draw->lineh / 2);
 	if (store->ray->end >= HEIGHT)
 		store->ray->end = HEIGHT - 1;
 }

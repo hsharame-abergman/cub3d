@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 02:09:21 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:17:08 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,22 @@ t_player	*init_player(void)
 	return (player);
 }
 
+t_draw	*ft_init_draw(void)
+{
+	t_draw	*draw;
+
+	draw = malloc(sizeof(t_draw));
+	if (!draw)
+		return (NULL);
+	draw->wallx = 0.01;
+	draw->texx = 0;
+	draw->texy = 0;
+	draw->texpos = 0.01;
+	draw->step = 0.01;
+	draw->lineh = 0;
+	return (draw);
+}
+
 t_ray	*init_ray(void)
 {
 	t_ray	*ray;
@@ -56,8 +72,22 @@ t_ray	*init_ray(void)
 	ray = malloc(sizeof(t_ray));
 	if (!ray)
 		return (NULL);
-	ray->raydir_x = 0;
-	ray->raydir_y = 0;
+	ray->raydir_x = 0.01;
+	ray->raydir_y = 0.01;
+	ray->camera = 0.01;
+	ray->map_x = 0;
+	ray->map_y = 0;
+	ray->sidedist_x = 0.01;
+	ray->sidedist_y = 0.01;
+	ray->deltadist_x = 0.01;
+	ray->deltadist_y = 0.01;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->hit = 0;
+	ray->side = 0;
+	ray->walldist = 0.01;
+	ray->start = 0;
+	ray->end = 0;
 	return (ray);
 }
 
@@ -74,15 +104,8 @@ bool	init_data(t_data *data, char *file)
 	data->north = ft_init_texture();
 	data->west = ft_init_texture();
 	data->south = ft_init_texture();
-	data->ray = (t_ray *)malloc(sizeof(t_ray));
-	if (!data->ray)
-		ft_error_msg("ray allocation failed");
+	data->player = init_player();
+	data->draw = ft_init_draw();
 	data->mouse_x = WIDTH / 2;
-	data->draw = (t_draw *)malloc(sizeof(t_draw));
-	if (!data->draw)
-	{
-		free(data->ray);
-		ft_error_msg("draw allocation failed");
-	}
 	return (true);
 }

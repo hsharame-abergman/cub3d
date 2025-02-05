@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 19:08:20 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:44:39 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int	ft_initialisation_north_texture(t_data *store, int h, int w)
 	char	*path;
 
 	path = ft_remove_newline(store->north->path);
+	free(store->north->path);
 	store->north->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->north->image)
 		return (1);
@@ -25,6 +26,7 @@ static int	ft_initialisation_north_texture(t_data *store, int h, int w)
 			&store->north->endian);
 	store->north->width = w;
 	store->north->height = h;
+	free(path);
 	return (0);
 }
 
@@ -33,6 +35,7 @@ static int	ft_initialisation_east_texture(t_data *store, int h, int w)
 	char	*path;
 
 	path = ft_remove_newline(store->east->path);
+	free(store->east->path);
 	store->east->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->east->image)
 		return (1);
@@ -41,6 +44,7 @@ static int	ft_initialisation_east_texture(t_data *store, int h, int w)
 			&store->east->endian);
 	store->east->width = w;
 	store->east->height = h;
+	free(path);
 	return (0);
 }
 
@@ -49,6 +53,7 @@ static int	ft_initialisation_south_texture(t_data *store, int h, int w)
 	char	*path;
 
 	path = ft_remove_newline(store->south->path);
+	free(store->south->path);
 	store->south->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->south->image)
 		return (1);
@@ -57,6 +62,7 @@ static int	ft_initialisation_south_texture(t_data *store, int h, int w)
 			&store->south->endian);
 	store->south->width = w;
 	store->south->height = h;
+	free(path);
 	return (0);
 }
 
@@ -65,6 +71,7 @@ static int	ft_initialisation_west_texture(t_data *store, int h, int w)
 	char	*path;
 
 	path = ft_remove_newline(store->west->path);
+	free(store->west->path);
 	store->west->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->west->image)
 		return (0);
@@ -73,6 +80,7 @@ static int	ft_initialisation_west_texture(t_data *store, int h, int w)
 			&store->west->endian);
 	store->west->width = w;
 	store->west->height = h;
+	free(path);
 	return (0);
 }
 
