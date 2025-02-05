@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/02 20:42:25 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 02:09:21 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_ray	*init_ray(void)
 	ray = malloc(sizeof(t_ray));
 	if (!ray)
 		return (NULL);
-	ray->ray_dir_x = 0;
-	ray->ray_dir_y = 0;
+	ray->raydir_x = 0;
+	ray->raydir_y = 0;
 	return (ray);
 }
 
@@ -66,8 +66,6 @@ bool	init_data(t_data *data, char *file)
 	data->mlx = NULL;
 	data->mlx_win = NULL;
 	data->filename = file;
-	data->win_height = 0;
-	data->win_width = 0;
 	data->map = init_map(data->filename);
 	if (!data->map)
 		return (false);
@@ -76,5 +74,15 @@ bool	init_data(t_data *data, char *file)
 	data->north = ft_init_texture();
 	data->west = ft_init_texture();
 	data->south = ft_init_texture();
+	data->ray = (t_ray *)malloc(sizeof(t_ray));
+	if (!data->ray)
+		ft_error_msg("ray allocation failed");
+	data->mouse_x = WIDTH / 2;
+	data->draw = (t_draw *)malloc(sizeof(t_draw));
+	if (!data->draw)
+	{
+		free(data->ray);
+		ft_error_msg("draw allocation failed");
+	}
 	return (true);
 }

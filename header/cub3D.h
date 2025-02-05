@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 17:43:32 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:30:54 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,42 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/types.h>
 # include <unistd.h>
+
+typedef struct s_ray
+{
+	double		camera;
+	double		raydir_x;
+	double		raydir_y;
+	int			map_x;
+	int			map_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	double		walldist;
+	int			start;
+	int			end;
+}				t_ray;
+
+typedef struct s_draw
+{
+	int			lineh;
+	double		wallx;
+	int			texx;
+	int			texy;
+	double		texpos;
+	double		step;
+}				t_draw;
 
 typedef enum e_texture_type
 {
@@ -59,8 +85,6 @@ typedef struct s_map
 	char		**initial_map;
 	char		**map_grid;
 	int			player;
-	int map_height;  // height of the map
-	size_t longest_str; // length of the longest string in the map
 }				t_map;
 
 typedef struct s_player
@@ -72,34 +96,10 @@ typedef struct s_player
 	double		vector_x;
 	double		vector_y;
 }				t_player;
-
-typedef struct s_ray
-{
-	double		ray_dir_x;
-	double		ray_dir_y;
-	int			map_x;
-	int			map_y;
-	double		side_dist_x;
-	double		side_dist_y;
-	double		delta_dist_x;
-	double		delta_dist_y;
-	int			step_x;
-	int			step_y;
-	int			hit;
-	int			side;
-	double		perp_wall_dist;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-	int			color;
-}				t_ray;
-
 typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
-	int			win_width;
-	int			win_height;
 	char		*filename;
 	t_player	*player;
 	t_ray		*ray;
@@ -109,32 +109,35 @@ typedef struct s_data
 	t_texture	*west;
 	t_texture	*east;
 	t_texture	*main;
+	t_draw		*draw;
+	int			mouse_x;
 }				t_data;
 
-# define WIDTH_TEXTURE 64;
-# define HEIGHT_TEXTURE 64;
+# define WIDTH_TEXTURE 64
+# define HEIGHT_TEXTURE 64
+# define HEIGHT 200
+# define WIDTH 300
+# define PLAYERS_SPEED 0.15
+# define ROTATE_SPEED 0.010
 
 t_texture		*ft_init_texture(void);
-int				ft_execution(t_data *store);
+char			**remove_newlines(char **str);
 int				ft_error_handler(char *str, int res);
-int				ft_initialisation_minilibx(t_data *store);
 int				ft_initialisation_textures(t_data *store);
-int				ft_initialisation_window(t_data *data);
 int				ft_keypress_handler(int keynum, t_data *data);
-int				ft_initialisation_main_texture(t_data *store, t_texture *main);
+int				ft_initialisation_main_texture(t_data *store);
 int				ft_destroy_handler(t_data *data);
 void			ft_clear_window(t_data *store, t_texture *main);
-void			ft_move_player(t_data *data, int keynum);
-void			ft_move_camera(t_data *store, int keynum);
-void			ft_render_frame(t_data *store);
-void			ft_render_floor(t_data *store);
-void			ft_mlx_pixel_put(int x, int y, t_texture *texture,
-					int color_bin);
-void			ft_render_column(t_data *store, t_ray *ray, int x);
-int				ft_initialisation_player(t_data *store, char *str, int y);
-t_texture		*ft_select_texture(t_data *store, t_ray *ray);
-int				ft_create_mock(t_data *store);
-void			ft_ray_casting(t_data *store, t_ray *ray, int x);
+void			ft_mlx_pixel_put(int x, int y, t_texture *t, int color_bin);
+int				ft_draw(t_data *store);
+void			ft_init_drawing(t_data *store, int x);
+void			ft_calculate_step(t_data *store);
+void			ft_calculate_distance(t_data *store);
+void			ft_dda(t_data *store);
+void			ft_calculate_stripe(t_data *store);
+void			ft_look_right(t_data *store);
+void			ft_look_left(t_data *store);
+void			ft_free_prev(t_data *store);
 
 void			find_player(t_data *data, t_map *map);
 bool			check_argv(int argc, char *filename);

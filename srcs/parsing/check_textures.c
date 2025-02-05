@@ -12,6 +12,30 @@
 
 #include "../../header/cub3D.h"
 
+char	*ft_remove_newline(char *str)
+{
+	char	*str2;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (str[i] != '\n')
+	{
+		i++;
+	}
+	str2 = (char *)malloc(sizeof(char) * (i + 1));
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] != '\n')
+			str2[j++] = str[i];
+		i++;
+	}
+	str2[j] = '\0';
+	return (str2);
+}
+
 bool	valide_texture(t_data *data, char *line)
 {
 	char	**separated;
@@ -42,8 +66,8 @@ bool	find_textures(t_data *data, t_map *map)
 		valide_texture(data, map->initial_map[i]);
 		i++;
 	}
-	if (!data->north->path || !data->south->path
-		|| !data->west->path || !data->east->path)
+	if (!data->north->path || !data->south->path || !data->west->path
+		|| !data->east->path)
 		return (false);
 	return (true);
 }

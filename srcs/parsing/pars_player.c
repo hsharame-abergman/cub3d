@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:15:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 17:42:58 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/04 23:22:32 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,23 @@ static void	direction_player(char c, t_player *player)
 {
 	if (c == 'N')
 	{
-		player->dir_x = 0;
-		player->dir_y = -1;
+		player->dir_x = 0.0;
+		player->dir_y = -1.0;
 	}
 	else if (c == 'S')
 	{
-		player->dir_x = 0;
-		player->dir_y = 1;
+		player->dir_x = 0.0;
+		player->dir_y = 1.0;
 	}
 	else if (c == 'E')
 	{
-		player->dir_x = 1;
-		player->dir_y = 0;
+		player->dir_x = 1.0;
+		player->dir_y = 0.0;
 	}
 	else if (c == 'W')
 	{
-		player->dir_x = -1;
-		player->dir_y = 0;
+		player->dir_x = -1.0;
+		player->dir_y = 0.0;
 	}
 }
 
