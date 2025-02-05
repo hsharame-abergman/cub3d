@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 16:30:54 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:09:15 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct s_data
 # define ROTATE_SPEED 0.010
 
 t_texture		*ft_init_texture(void);
-char			**remove_newlines(char **str);
+char			*ft_remove_newline(char *str);
 int				ft_error_handler(char *str, int res);
 int				ft_initialisation_textures(t_data *store);
 int				ft_keypress_handler(int keynum, t_data *data);

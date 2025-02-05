@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 16:25:31 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:09:30 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char *argv[])
 {
 	t_data	store;
-	char	**res;
 
 	if (!check_argv(argc, argv[1]))
 		ft_error_msg("incorrect input");
@@ -31,8 +30,6 @@ int	main(int argc, char *argv[])
 		ft_clear_window(&store, store.main);
 		ft_error_msg("window allocation failed");
 	}
-	res = remove_newlines(store.map->map_grid); // TODO: remove_newlines
-	store.map->map_grid = res;
 	ft_initialisation_textures(&store);
 	mlx_loop_hook(store.mlx, ft_draw, &store);
 	mlx_hook(store.mlx_win, 2, 1L << 0, ft_keypress_handler, &store);

@@ -6,23 +6,18 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 00:58:32 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:08:20 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* 
-0 - NORTH
-1 - EAST
-2 - SOUTH
-3 - WEST
- */
 
 #include "../../header/cub3D.h"
 
 static int	ft_initialisation_north_texture(t_data *store, int h, int w)
 {
-	store->north->image = mlx_xpm_file_to_image(store->mlx, store->north->path,
-			&w, &h);
+	char	*path;
+
+	path = ft_remove_newline(store->north->path);
+	store->north->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->north->image)
 		return (1);
 	store->north->address = mlx_get_data_addr(store->north->image,
@@ -35,8 +30,10 @@ static int	ft_initialisation_north_texture(t_data *store, int h, int w)
 
 static int	ft_initialisation_east_texture(t_data *store, int h, int w)
 {
-	store->east->image = mlx_xpm_file_to_image(store->mlx, store->east->path,
-			&w, &h);
+	char	*path;
+
+	path = ft_remove_newline(store->east->path);
+	store->east->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->east->image)
 		return (1);
 	store->east->address = mlx_get_data_addr(store->east->image,
@@ -49,8 +46,10 @@ static int	ft_initialisation_east_texture(t_data *store, int h, int w)
 
 static int	ft_initialisation_south_texture(t_data *store, int h, int w)
 {
-	store->south->image = mlx_xpm_file_to_image(store->mlx, store->south->path,
-			&w, &h);
+	char	*path;
+
+	path = ft_remove_newline(store->south->path);
+	store->south->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->south->image)
 		return (1);
 	store->south->address = mlx_get_data_addr(store->south->image,
@@ -63,8 +62,10 @@ static int	ft_initialisation_south_texture(t_data *store, int h, int w)
 
 static int	ft_initialisation_west_texture(t_data *store, int h, int w)
 {
-	store->west->image = mlx_xpm_file_to_image(store->mlx, store->west->path,
-			&w, &h);
+	char	*path;
+
+	path = ft_remove_newline(store->west->path);
+	store->west->image = mlx_xpm_file_to_image(store->mlx, path, &w, &h);
 	if (!store->west->image)
 		return (0);
 	store->west->address = mlx_get_data_addr(store->west->image,

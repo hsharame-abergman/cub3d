@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_grid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:23:11 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 17:04:51 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:08:43 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	find_end(char **map)
 }
 
 char	**extract_map(char **dirty, int start, int end)
-	{
+{
 	char	**map;
 	int		i;
 
@@ -62,7 +62,7 @@ char	**extract_map(char **dirty, int start, int end)
 		return (NULL);
 	while (start <= end)
 	{
-		map[i] = ft_strdup(dirty[start]);
+		map[i] = ft_remove_newline(dirty[start]);
 		start++;
 		i++;
 	}
@@ -89,6 +89,7 @@ void	display_grid(char **grid)
 				ft_putchar_fd(grid[i][j], 1);
 			j++;
 		}
+		ft_putchar_fd('\n', 1);
 		i++;
 	}
 }
@@ -114,10 +115,10 @@ int	find_longest_line(char **map)
 }
 
 /*
-    In the draft of a map, which also contains other information, such as
-    the color or the path to the textures, we find the description of the
-    map itself, we find the beginning and the end and we generate the clean
-    copy of the map.
+	In the draft of a map, which also contains other information, such as
+	the color or the path to the textures, we find the description of the
+	map itself, we find the beginning and the end and we generate the clean
+	copy of the map.
 */
 bool	find_grid(t_map *map, char **dirty_map)
 {
