@@ -6,21 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:07:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 00:37:02 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 01:55:58 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3D.h"
-
-void	ft_free_main_texture(t_data *data)
-{
-/* 	if (data->map->main->image)
-		mlx_destroy_image(data->mlx, data->map->main->image); */
-	free(data->main->image);
-	free(data->main);
-	data->main->image = NULL;
-	data->main = NULL;
-}
 
 void	ft_free_texture(t_texture *texture, void *mlx)
 {
@@ -44,8 +34,6 @@ void	free_exit(t_data *data, char *error)
 	if (!data)
 		return ;
 	ft_free_textures(data);
-	if (data->main)
-		ft_free_main_texture(data);
 	if (data->map)
 		free(data->map);
 	if (data->player)
@@ -62,4 +50,12 @@ void	ft_error_msg(char *str)
 	ft_putendl_fd("Error", 2);
 	ft_putstr_fd(str, 2);
 	exit(1);
+}
+
+void	ft_free_prev(t_data *store)
+{
+	if (store->ray)
+		free(store->ray);
+	if (store->draw)
+		free(store->draw);
 }

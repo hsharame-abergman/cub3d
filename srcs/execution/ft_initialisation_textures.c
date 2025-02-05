@@ -6,9 +6,16 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/03 00:25:29 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 00:58:32 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* 
+0 - NORTH
+1 - EAST
+2 - SOUTH
+3 - WEST
+ */
 
 #include "../../header/cub3D.h"
 

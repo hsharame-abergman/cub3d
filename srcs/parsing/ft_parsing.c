@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 15:29:48 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/27 17:56:57 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:20:04 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ bool	parsing(t_data *data)
 {
 	if (!map_is_valid(data, data->map))
 	{
-		free_exit(data, "The map is not valid");
+		//free_exit(data, "The map is not valid");
 		return (false);
 	}
+	if (data->map->player == 1)
+		find_player(data, data->map);
 	return (true);
 }
 
