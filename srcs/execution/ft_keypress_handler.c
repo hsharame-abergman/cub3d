@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 01:41:11 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:11:13 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_move_forward(t_data *store)
 {
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			+ store->player->dir_x * PLAYERS_SPEED + 0.001)] == '0'
+		+ store->player->dir_x * PLAYERS_SPEED + 0.001)] == '0'
 		|| store->map->map_grid[(int)store->player->y][(int)(store->player->x
 			+ store->player->dir_x * PLAYERS_SPEED + 0.001)] == ' ')
 		store->player->x += store->player->dir_x * PLAYERS_SPEED + 0.001;
@@ -29,7 +29,7 @@ static void	ft_move_forward(t_data *store)
 static void	ft_move_back(t_data *store)
 {
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			- store->player->dir_x * PLAYERS_SPEED + 0.001)] == '0'
+		- store->player->dir_x * PLAYERS_SPEED + 0.001)] == '0'
 		|| store->map->map_grid[(int)store->player->y][(int)(store->player->x
 			- store->player->dir_x * PLAYERS_SPEED + 0.001)] == ' ')
 		store->player->x -= store->player->dir_x * PLAYERS_SPEED + 0.001;
@@ -43,7 +43,7 @@ static void	ft_move_back(t_data *store)
 static void	ft_move_left(t_data *store)
 {
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			- store->player->vector_x * PLAYERS_SPEED + 0.001)] == '0'
+		- store->player->vector_x * PLAYERS_SPEED + 0.001)] == '0'
 		|| store->map->map_grid[(int)store->player->y][(int)(store->player->x
 			- store->player->vector_x * PLAYERS_SPEED + 0.001)] == ' ')
 		store->player->x -= store->player->vector_x * PLAYERS_SPEED + 0.001;
@@ -57,7 +57,7 @@ static void	ft_move_left(t_data *store)
 static void	ft_move_right(t_data *store)
 {
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			+ store->player->vector_x * PLAYERS_SPEED + 0.001)] == '0'
+		+ store->player->vector_x * PLAYERS_SPEED + 0.001)] == '0'
 		|| store->map->map_grid[(int)store->player->y][(int)(store->player->x
 			+ store->player->vector_x * PLAYERS_SPEED + 0.001)] == ' ')
 		store->player->x += store->player->vector_x * PLAYERS_SPEED + 0.001;
