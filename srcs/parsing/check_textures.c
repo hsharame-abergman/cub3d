@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/04 21:44:29 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:36:42 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ bool	valide_texture(t_data *data, char *line)
 	if (!separated || !separated[0] || !separated[1])
 		return (free_tab(separated), false);
 	if (!ft_strncmp(separated[0], "NO", 2) && !data->north->path)
-		data->north->path = ft_remove_newline(separated[1]);
+		data->north->path = ft_strdup(separated[1]);
 	else if (!ft_strncmp(separated[0], "SO", 2) && !data->south->path)
-		data->south->path = ft_remove_newline(separated[1]);
+		data->south->path = ft_strdup(separated[1]);
 	else if (!ft_strncmp(separated[0], "WE", 2) && !data->west->path)
-		data->west->path = ft_remove_newline(separated[1]);
+		data->west->path = ft_strdup(separated[1]);
 	else if (!ft_strncmp(separated[0], "EA", 2) && !data->east->path)
-		data->east->path = ft_remove_newline(separated[1]);
+		data->east->path = ft_strdup(separated[1]);
 	else
 		return (free_tab(separated), false);
 	return (free_tab(separated), true);

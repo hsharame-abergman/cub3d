@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   pars_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:15:55 by hsharame          #+#    #+#             */
 /*   Updated: 2025/02/04 23:22:32 by abergman         ###   ########.fr       */
