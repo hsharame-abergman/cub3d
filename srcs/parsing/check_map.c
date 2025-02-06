@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 12:40:58 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/22 16:23:13 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:17:28 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	fill_copy_lines(t_map *map)
 	fd = open(map->filename, O_RDONLY);
 	if (fd < 0)
 		return ;
-	while (1)
+	while (map->initial_map)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
@@ -31,7 +31,6 @@ void	fill_copy_lines(t_map *map)
 		i++;
 		free(line);
 	}
-	map->initial_map[i] = NULL;
 	close(fd);
 }
 
@@ -61,13 +60,41 @@ bool	extract_info(t_map *map)
 	map->initial_map = malloc(sizeof(char *) * (i + 1));
 	if (!map->initial_map)
 		return (false);
+	map->initial_map[i] = NULL;
 	fill_copy_lines(map);
 	return (true);
+}
+
+static bool	order_in_file(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != ' ' && map[i][j] != '\n')
+			{
+				if (ft_isalpha(map[i][j]))
+					return (true);
+				else if (ft_isdigit(map[i][j]))
+					return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (false);
 }
 
 bool	map_is_valid(t_data *data, t_map *map)
 {
 	if (!extract_info(map))
+		return (false);
+	if (!order_in_file(map->initial_map))
 		return (false);
 	if (!check_textures_colors(data, map))
 		return (false);

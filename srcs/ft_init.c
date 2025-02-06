@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 21:17:08 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:03:00 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_map	*init_map(char *filename)
 	map->length = 0;
 	map->c_color = 0;
 	map->f_color = 0;
+	map->player = 0;
 	map->initial_map = NULL;
 	map->map_grid = NULL;
 	map->rgb[0] = 0;

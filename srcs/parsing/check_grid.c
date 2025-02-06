@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:14:20 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 12:20:54 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:42:54 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ bool	check_player_other_char(t_map *map)
 		{
 			if (is_player(map->map_grid[i][j]) == 1)
 				map->player++;
-			if (map->player > 1)
-				return (false);
 			j++;
 		}
 		i++;
 	}
+	if (map->player != 1)
+		return (false);
 	return (true);
 }

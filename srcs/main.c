@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 19:09:30 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:17:06 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@ int	main(int argc, char *argv[])
 	if (!init_data(&store, argv[1]))
 		free_exit(&store, "initialization failed");
 	if (!parsing(&store))
+		return (ft_putstr_fd("parsing failed\n", 2), 1);
+	if (!ft_initialisation_main_texture(&store)
+		|| !ft_initialisation_textures(&store))
 	{
 		ft_putstr_fd("parsing failed\n", 2);
 		return (1);
 	}
 	if (!ft_initialisation_main_texture(&store))
 	{
-		ft_clear_window(&store, store.main);
+		free_exit(&store, NULL);
 		ft_error_msg("window allocation failed");
 	}
-	ft_initialisation_textures(&store);
+	
 	mlx_loop_hook(store.mlx, ft_draw, &store);
 	mlx_hook(store.mlx_win, 2, 1L << 0, ft_keypress_handler, &store);
 	mlx_hook(store.mlx_win, 17, 5, ft_destroy_handler, &store);
