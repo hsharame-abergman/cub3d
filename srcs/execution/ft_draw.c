@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 21:15:40 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:25:07 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ int	ft_draw(t_data *store)
 	ft_raycasting(store);
 	mlx_put_image_to_window(store->mlx, store->mlx_win, store->main->image, 0,
 		0);
+	ft_mini_map(store);
 	return (1);
 }

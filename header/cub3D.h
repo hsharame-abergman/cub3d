@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 21:36:45 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/11 21:26:15 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include <fcntl.h>
-# include <math.h>
 # include <limits.h>
+# include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -138,6 +138,7 @@ void			ft_calculate_stripe(t_data *store);
 void			ft_look_right(t_data *store);
 void			ft_look_left(t_data *store);
 t_draw			*ft_init_draw(void);
+void			ft_mini_map(t_data *store);
 
 void			find_player(t_data *data, t_map *map);
 bool			check_argv(int argc, char *filename);
