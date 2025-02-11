@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/11 21:24:12 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/11 22:10:30 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char *argv[])
 	
 	mlx_loop_hook(store.mlx, ft_draw, &store);
 	mlx_hook(store.mlx_win, 2, 1L << 0, ft_keypress_handler, &store);
+	mlx_hook(store.mlx_win, 6, 1L << 6, ft_mouse_handler, &store);
 	mlx_hook(store.mlx_win, 17, 5, ft_destroy_handler, &store);
 	mlx_loop(store.mlx);
 	return (0);

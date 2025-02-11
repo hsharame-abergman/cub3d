@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/11 21:26:15 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/11 22:22:14 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_player
 	double		dir_y;
 	double		vector_x;
 	double		vector_y;
+	double		mouse_x;
+	double		mouse_y;
 }				t_player;
 typedef struct s_data
 {
@@ -116,10 +118,10 @@ typedef struct s_data
 
 # define WIDTH_TEXTURE 64
 # define HEIGHT_TEXTURE 64
-# define HEIGHT 200
-# define WIDTH 300
+# define HEIGHT 250
+# define WIDTH 500
 # define PLAYERS_SPEED 0.15
-# define ROTATE_SPEED 0.010
+# define ROTATE_SPEED 0.03
 
 t_texture		*ft_init_texture(void);
 char			*ft_remove_newline(char *str);
@@ -139,6 +141,7 @@ void			ft_look_right(t_data *store);
 void			ft_look_left(t_data *store);
 t_draw			*ft_init_draw(void);
 void			ft_mini_map(t_data *store);
+int			ft_mouse_handler(int x, int y, t_data *store);
 
 void			find_player(t_data *data, t_map *map);
 bool			check_argv(int argc, char *filename);
