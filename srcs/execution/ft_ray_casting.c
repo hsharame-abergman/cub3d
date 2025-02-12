@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:33:15 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/06 00:01:17 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:00:52 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ void	ft_calculate_stripe(t_data *store)
 	else
 	{
 		store->draw->lineh = (int)line_height;
-		if (store->draw->lineh > HEIGHT)
-			store->draw->lineh = HEIGHT;
+		// if (store->draw->lineh > HEIGHT)
+		// 	store->draw->lineh = HEIGHT;
 	}
 	store->ray->start = (HEIGHT / 2) - (store->draw->lineh / 2);
 	if (store->ray->start < 0)

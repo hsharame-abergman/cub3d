@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:15:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/11 21:49:59 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 12:57:07 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	ft_draw_square(int x, int y, t_texture *t, int color)
 	int	j;
 
 	i = 0;
-	while (i < 5)
+	while (i < 3)
 	{
 		j = 0;
-		while (j < 5)
+		while (j < 3)
 		{
-			ft_mlx_pixel_put(x * 5 + i + 17, y * 5 + j + 17, t, color);
+			ft_mlx_pixel_put(x * 3 + i + 17, y * 3 + j + (HEIGHT - HEIGHT/4), t, color);
 			j++;
 		}
 		i++;

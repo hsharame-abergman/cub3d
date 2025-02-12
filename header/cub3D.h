@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/11 22:22:14 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:03:34 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct s_data
 # define HEIGHT 250
 # define WIDTH 500
 # define PLAYERS_SPEED 0.15
-# define ROTATE_SPEED 0.03
+# define ROTATE_SPEED 0.09
 
 t_texture		*ft_init_texture(void);
 char			*ft_remove_newline(char *str);
