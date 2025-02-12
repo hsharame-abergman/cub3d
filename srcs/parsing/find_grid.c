@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_grid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:23:11 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 19:08:43 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:46:06 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,6 @@ char	**extract_map(char **dirty, int start, int end)
 	}
 	map[i] = NULL;
 	return (map);
-}
-
-void	display_grid(char **grid)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (grid[i])
-	{
-		j = 0;
-		while (grid[i][j])
-		{
-			if (grid[i][j] == '1')
-				ft_putchar_fd(35, 1);
-			else if (grid[i][j] == '0')
-				ft_putchar_fd(' ', 1);
-			else
-				ft_putchar_fd(grid[i][j], 1);
-			j++;
-		}
-		ft_putchar_fd('\n', 1);
-		i++;
-	}
 }
 
 int	find_longest_line(char **map)

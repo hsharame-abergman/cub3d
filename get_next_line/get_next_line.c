@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 12:18:42 by hsharame          #+#    #+#             */
-/*   Updated: 2024/07/31 17:42:17 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:45:02 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_newline(const char *saved)
-{
-	char	*ptr;
-
-	ptr = (char *)saved;
-	while (*ptr)
-	{
-		if (*ptr == '\n')
-			return (1);
-		ptr++;
-	}
-	return (0);
-}
 
 char	*ft_read(int fd, char *saved, char *buf)
 {

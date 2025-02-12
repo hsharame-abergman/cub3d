@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 15:29:48 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 17:20:04 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:48:38 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ bool	parsing(t_data *data)
 {
 	if (!map_is_valid(data, data->map))
 	{
-		//free_exit(data, "The map is not valid");
 		return (false);
 	}
 	if (data->map->player == 1)

@@ -6,13 +6,13 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:18:13 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/21 15:00:01 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:47:04 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-bool	check_values(char **separated)
+static bool	check_values(char **separated)
 {
 	int	i;
 	int	j;
@@ -34,15 +34,25 @@ bool	check_values(char **separated)
 	return (true);
 }
 
+int	check_number(char **lines)
+{
+	int	i;
+
+	i = 0;
+	while (lines[i])
+		i++;
+	return (i);
+}
+
 bool	extract_color(t_map *map, char c, char *line)
 {
 	char	**separated;
 	int		i;
+	int		j;
 
 	i = 0;
 	separated = ft_split(line, ',');
-	if (!separated || !separated[0] || !separated[1] || !separated[2]
-		|| !check_values(separated))
+	if (separated && ((j = check_number(separated) != 3) || !check_values(separated)))
 		return (free_tab(separated), false);
 	while (i <= 2)
 	{

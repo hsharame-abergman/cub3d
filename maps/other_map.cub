@@ -1,7 +1,7 @@
-NO ./textures/test/North.xpm
-SO ./textures/test/South.xpm
-WE ./textures/test/West.xpm
-EA ./textures/wolfenstein/East.xpm
+NO textures/wolfenstein/blue_stone.xpm
+SO ./textures/wolfenstein/color_stone.xpm
+WE ./textures/wolfenstein/eagle.xpm
+EA ./textures/wolfenstein/grey_stone.xpm
 
 F 205,105,180
 C 173,216,230

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 14:40:39 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:47:19 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,9 @@ bool			extract_info(t_map *map);
 void			fill_copy_lines(t_map *map);
 int				rgb_to_int(int r, int g, int b);
 bool			check_textures_colors(t_data *data, t_map *map);
+int				check_number(char **lines);
 bool			find_grid(t_map *map, char **dirty_map);
+void			display_grid(char **grid);
 bool			find_colors(t_map *map);
 void			free_tab(char **tab);
 bool			ft_isspace(char c);

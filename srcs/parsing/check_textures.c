@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/03 12:36:42 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:48:20 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ char	*ft_remove_newline(char *str)
 bool	valide_texture(t_data *data, char *line)
 {
 	char	**separated;
+	int		i;
 
 	separated = ft_split(line, ' ');
-	if (!separated || !separated[0] || !separated[1])
+	if (separated && (i = check_number(separated) != 2))
 		return (free_tab(separated), false);
 	if (!ft_strncmp(separated[0], "NO", 2) && !data->north->path)
 		data->north->path = ft_strdup(separated[1]);

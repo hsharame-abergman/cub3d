@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 14:54:10 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:12:01 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	if (!init_data(&store, argv[1]))
 		free_exit(&store, "initialization failed");
 	if (!parsing(&store))
-		return (ft_putstr_fd("parsing failed\n", 2), 1);
+		free_exit(&store, "The map is not valid");
 	if (!ft_initialisation_main_texture(&store)
 		|| !ft_initialisation_textures(&store))
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:07:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/05 20:58:30 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:37:04 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,24 @@ void	ft_free_texture(t_texture *texture, void *mlx)
 	if (texture->image)
 		mlx_destroy_image(mlx, texture->image);
 	texture->image = NULL;
+	if (texture->path)
+		free(texture->path);
+	texture->path = NULL;
 	free(texture);
 }
 
 void	ft_free_textures(t_data *data)
 {
-	ft_free_texture(data->north, data->mlx);
-	ft_free_texture(data->south, data->mlx);
-	ft_free_texture(data->west, data->mlx);
-	ft_free_texture(data->east, data->mlx);
-	ft_free_texture(data->main, data->mlx);
+	if (data->north)
+		ft_free_texture(data->north, data->mlx);
+	if (data->south)
+		ft_free_texture(data->south, data->mlx);
+	if (data->west)
+		ft_free_texture(data->west, data->mlx);
+	if (data->east)
+		ft_free_texture(data->east, data->mlx);
+	if (data->main)
+		ft_free_texture(data->main, data->mlx);
 }
 
 void	free_exit(t_data *data, char *error)

@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:14:20 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/06 16:42:54 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:55:30 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,28 @@ bool	check_player_other_char(t_map *map)
 	if (map->player != 1)
 		return (false);
 	return (true);
+}
+
+void	display_grid(char **grid)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (grid[i])
+	{
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] == '1')
+				ft_putchar_fd(35, 1);
+			else if (grid[i][j] == '0')
+				ft_putchar_fd(' ', 1);
+			else
+				ft_putchar_fd(grid[i][j], 1);
+			j++;
+		}
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
+#    By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/05 21:18:38 by abergman         ###   ########.fr        #
+#    Updated: 2025/02/12 16:31:38 by hsharame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(OBJDIR)/%.o: ./%.c $(HEADERS)
 
 $(NAME): $(LIBFT) $(OBJDIR) $(HEADERS) $(OBJS)
 		$(CC)  $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX_FLAGS)
-		@echo "$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): You can use './cub3D' for execute."
+	@echo "$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): You can use './cub3D' for execute."
 
 mlx:
 		@mkdir mlx;
