@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:15:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 12:57:07 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:36:46 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_draw_square(int x, int y, t_texture *t, int color)
 		j = 0;
 		while (j < 3)
 		{
-			ft_mlx_pixel_put(x * 3 + i + 17, y * 3 + j + (HEIGHT - HEIGHT/4), t, color);
+			ft_mlx_pixel_put(x * 3 + i + 17, y * 3 + j + (HEIGHT - HEIGHT / 4),
+				t, color);
 			j++;
 		}
 		i++;
@@ -37,23 +38,23 @@ void	ft_draw_player(t_data *store, int color)
 
 void	ft_draw_map_element(char element, int x, int y, t_texture *t)
 {
-    if (element == '1')
-        ft_draw_square(x, y, t, 0x00FF0000);
-    else if (element == '0')
-        ft_draw_square(x, y, t, 0x000000FF);
+	if (element == '1')
+		ft_draw_square(x, y, t, 0x00FF0000);
+	else if (element == '0')
+		ft_draw_square(x, y, t, 0x000000FF);
 }
 
 void	ft_mini_map(t_data *store)
 {
-    int	i;
-    int	j;
+	int	i;
+	int	j;
 
-    i = -1;
-    while (store->map->map_grid[++i])
-    {
-        j = -1;
-        while (store->map->map_grid[i][++j])
-            ft_draw_map_element(store->map->map_grid[i][j], j, i, store->main);
-    }
-    ft_draw_player(store, 0x0000FF00);
+	i = -1;
+	while (store->map->map_grid[++i])
+	{
+		j = -1;
+		while (store->map->map_grid[i][++j])
+			ft_draw_map_element(store->map->map_grid[i][j], j, i, store->main);
+	}
+	ft_draw_player(store, 0x0000FF00);
 }

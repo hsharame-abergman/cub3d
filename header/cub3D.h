@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 13:03:34 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:40:39 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ void			ft_look_right(t_data *store);
 void			ft_look_left(t_data *store);
 t_draw			*ft_init_draw(void);
 void			ft_mini_map(t_data *store);
-int			ft_mouse_handler(int x, int y, t_data *store);
+int				ft_mouse_handler(int x, int y, t_data *store);
+void			ft_draw_texture(t_data *store, int x);
 
 void			find_player(t_data *data, t_map *map);
 bool			check_argv(int argc, char *filename);
