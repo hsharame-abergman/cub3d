@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initialisation_main_texture.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:30:48 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 17:43:01 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:51:29 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_initialisation_main_texture(t_data *store)
 {
-	store->main = (t_texture *)malloc(sizeof(t_texture));
-	if (!store->main)
-		return (0);
-	store->main->path = NULL;
+	store->main = ft_init_texture();
 	store->mlx = mlx_init();
 	if (!store->mlx)
 		return (0);

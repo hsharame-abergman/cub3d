@@ -6,18 +6,29 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:27:51 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 01:52:10 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:14:45 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
+/*
+This code shows a pixel plotting function for a graphics program.
+- Performs boundary checking to ensure the pixel is within the screen dimensions
+- Calculates the correct memory position in the texture buffer using:
+	- Line length for row offset
+	- Bits per pixel for column offset
+- Writes the color value directly to memory using pointer arithmetic
+ */
+
 void	ft_mlx_pixel_put(int x, int y, t_texture *main, int color_bin)
 {
-	int	i;
+	char	*dst;
 
-	i = (x * main->bits_per_pixel / 8) + (y * main->line_length);
-	main->address[i] = (char)color_bin;
-	main->address[++i] = (char)(color_bin >> 8);
-	main->address[++i] = (char)(color_bin >> 16);
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		dst = main->address + (y * main->line_length + x * (main->bits_per_pixel
+					/ 8));
+		*(unsigned int *)dst = color_bin;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:52:13 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 17:12:01 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:19:01 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	main(int argc, char *argv[])
 		free_exit(&store, "The map is not valid");
 	if (!ft_initialisation_main_texture(&store)
 		|| !ft_initialisation_textures(&store))
-	{
-		free_exit(&store, NULL);
-		ft_error_msg("window allocation failed");
-	}
+		free_exit(&store, "window allocation failed");
 	mlx_loop_hook(store.mlx, ft_draw, &store);
 	mlx_hook(store.mlx_win, 2, 1L << 0, ft_keypress_handler, &store);
 	mlx_hook(store.mlx_win, 6, 1L << 6, ft_mouse_handler, &store);
