@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 14:45:18 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:46:31 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ void	ft_raycasting(t_data *store)
 	int	x;
 
 	x = -1;
-	while (++x < WIDTH)
+	while (x < WIDTH)
 	{
-		ft_init_drawing(store, x);
-		ft_calculate_step(store);
-		ft_dda(store);
-		ft_calculate_stripe(store);
-		ft_draw_texture(store, x);
+		ft_init_drawing(store, x); // Сначала вызывается функция `ft_init_drawing`, которая инициализирует параметры, необходимые для трассировки луча для текущей координаты `x`. 
+		ft_calculate_step(store); // Затем вызывается функция `ft_calculate_step`, которая рассчитывает шаги для перемещения луча по сетке карты.
+		ft_dda(store); // После этого вызывается функция `ft_dda`, которая реализует алгоритм DDA для трассировки луча.
+		ft_calculate_stripe(store); // После завершения алгоритма DDA вызывается функция `ft_calculate_stripe`, которая рассчитывает параметры для отрисовки столбца на экране.
+		ft_draw_texture(store, x); // Наконец, вызывается функция `ft_draw_texture`, которая отрисовывает столбец на экране.
+		x += 2;
 	}
 }
 
