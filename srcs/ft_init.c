@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:44:27 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:02:55 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_map	*init_map(char *filename)
 	map->player = 0;
 	map->initial_map = NULL;
 	map->map_grid = NULL;
+	map->index = 0;
 	map->rgb[0] = 0;
 	map->rgb[1] = 0;
 	map->rgb[2] = 0;
@@ -47,6 +48,8 @@ t_player	*init_player(void)
 	player->dir_y = 0;
 	player->vector_x = 0;
 	player->vector_y = 0;
+	player->mouse_x = 0;
+	player->mouse_y = 0;
 	return (player);
 }
 

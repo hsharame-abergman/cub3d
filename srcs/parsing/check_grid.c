@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:14:20 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:55:30 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:04:50 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ bool	check_other_char(char *line)
 	while (line[i] == ' ')
 		i++;
 	end = ft_strlen(line) - 1;
-	while (line[end] == '\n' || line[end] == ' ')
-		end--;
 	while (i <= end)
 	{
 		if (line[i] != '1' && line[i] != '0'

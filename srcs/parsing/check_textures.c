@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:48:20 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:02:29 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,44 @@ char	*ft_remove_newline(char *str)
 	return (str2);
 }
 
+static char	*check_acces(char *line_path, char *where)
+{
+	int		fd;
+	char	*path;
+
+	path = ft_remove_newline(line_path);
+	fd = open(path, O_RDONLY);
+	free(path);
+	if (fd == -1)
+	{
+		ft_putstr_fd("Invalid path of texture ", 2);
+		ft_putendl_fd(where, 2);
+		return (NULL);
+	}
+	close(fd);
+	return (ft_strdup(line_path));
+}
+
 bool	valide_texture(t_data *data, char *line)
 {
 	char	**separated;
 	int		i;
 
 	separated = ft_split(line, ' ');
-	if (separated && (i = check_number(separated) != 2))
-		return (free_tab(separated), false);
+	i = check_number(separated);
+	if (separated && i != 2)
+		return (free_tab(separated), true);
 	if (!ft_strncmp(separated[0], "NO", 2) && !data->north->path)
-		data->north->path = ft_strdup(separated[1]);
+		data->north->path = check_acces(separated[1], "north");
 	else if (!ft_strncmp(separated[0], "SO", 2) && !data->south->path)
-		data->south->path = ft_strdup(separated[1]);
+		data->south->path = check_acces(separated[1], "south");
 	else if (!ft_strncmp(separated[0], "WE", 2) && !data->west->path)
-		data->west->path = ft_strdup(separated[1]);
+		data->west->path = check_acces(separated[1], "west");
 	else if (!ft_strncmp(separated[0], "EA", 2) && !data->east->path)
-		data->east->path = ft_strdup(separated[1]);
+		data->east->path = check_acces(separated[1], "east");
 	else
-		return (free_tab(separated), false);
+		return (ft_putendl_fd("Unknown key", 2),
+			free_tab(separated), false);
 	return (free_tab(separated), true);
 }
 
@@ -62,11 +82,13 @@ bool	find_textures(t_data *data, t_map *map)
 	int	i;
 
 	i = 0;
-	while (map->initial_map[i])
+	while (map->initial_map[i][0] != 'F')
 	{
-		valide_texture(data, map->initial_map[i]);
+		if (!valide_texture(data, map->initial_map[i]))
+			return (false);
 		i++;
 	}
+	map->index = i;
 	if (!data->north->path || !data->south->path || !data->west->path
 		|| !data->east->path)
 		return (false);

@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:18:13 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:47:04 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:14:02 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ bool	extract_color(t_map *map, char c, char *line)
 
 	i = 0;
 	separated = ft_split(line, ',');
-	if (separated && ((j = check_number(separated) != 3) || !check_values(separated)))
+	j = check_number(separated);
+	if (separated && (j != 3 || !check_values(separated)))
 		return (free_tab(separated), false);
 	while (i <= 2)
 	{
@@ -92,19 +93,30 @@ bool	valide_color(t_map *map, char *line)
 			return (free(sub_line), true);
 		free(sub_line);
 	}
-	return (false);
+	else if (c == '\n')
+		return (true);
+	return (ft_putendl_fd("Unknown key", 2), false);
 }
 
 bool	find_colors(t_map *map)
 {
 	int	i;
+	int	j;
 	int	colors;
 
-	i = 0;
+	i = map->index;
 	colors = 0;
 	while (map->initial_map[i])
-	{
-		if (valide_color(map, map->initial_map[i]))
+	{	
+		j = 0;
+		while (ft_isspace(map->initial_map[i][j]))
+			j++;
+		if (map->initial_map[i][j] == '\0' ||
+				map->initial_map[i][j] == '1' || map->initial_map[i][j] == '\n')
+			break ;
+		if (!valide_color(map, map->initial_map[i]))
+			return (false);
+		else
 			colors++;
 		i++;
 	}
