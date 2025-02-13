@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:30:48 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 18:51:29 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:00:52 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	ft_initialisation_main_texture(t_data *store)
 	store->mlx = mlx_init();
 	if (!store->mlx)
 		return (0);
-	store->mlx_win = mlx_new_window(store->mlx, WIDTH, HEIGHT, "Cub3D");
+	store->mlx_win = mlx_new_window(store->mlx, store->win_width,
+			store->win_height, "Cub3D");
 	if (!store->mlx_win)
 		return (0);
-	store->main->image = mlx_new_image(store->mlx, WIDTH, HEIGHT);
+	store->main->image = mlx_new_image(store->mlx, store->win_width,
+			store->win_height);
 	if (!store->main->image)
 		return (0);
 	store->main->address = mlx_get_data_addr(store->main->image,

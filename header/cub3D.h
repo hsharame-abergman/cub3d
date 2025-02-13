@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:47:19 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:59:56 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <X11/Xlib.h>
+#include <X11/extensions/Xrandr.h>
 
 typedef struct s_ray
 {
@@ -103,6 +105,8 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
+	int			win_width;
+	int			win_height;
 	char		*filename;
 	t_player	*player;
 	t_ray		*ray;

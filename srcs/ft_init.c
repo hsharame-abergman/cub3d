@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:44:27 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:14:13 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ bool	init_data(t_data *data, char *file)
 {
 	data->mlx = NULL;
 	data->mlx_win = NULL;
+	data->win_height = HEIGHT;
+	data->win_width = WIDTH;
 	data->main = NULL;
 	data->filename = file;
 	data->map = init_map(data->filename);
