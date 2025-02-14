@@ -6,13 +6,14 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:53:58 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:55:04 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/cub3D.h"
 
-// Проверка на столкновение с стеной при движении вперед. Если игрок не столкнулся со стеной,его координаты обновляются.
+/* Checking for a collision with a wall when moving forward.  */
+/* If the player has not encountered the wall, his coordinates are updated. */
 
 static void	ft_move_forward(t_data *store)
 {
@@ -22,8 +23,10 @@ static void	ft_move_forward(t_data *store)
 	new_x = store->player->dir_x * PLAYERS_SPEED;
 	new_y = store->player->dir_y * PLAYERS_SPEED;
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			+ store->player->dir_x * PLAYERS_SPEED)] == '0')
+		+ store->player->dir_x * PLAYERS_SPEED)] == '0')
+	{
 		store->player->x += new_x;
+	}
 	if (store->map->map_grid[(int)(store->player->y + store->player->dir_y
 			* PLAYERS_SPEED)][(int)store->player->x] == '0')
 		store->player->y += new_y;
@@ -37,8 +40,10 @@ static void	ft_move_back(t_data *store)
 	new_x = store->player->dir_x * PLAYERS_SPEED;
 	new_y = store->player->dir_y * PLAYERS_SPEED;
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			- store->player->dir_x * PLAYERS_SPEED)] == '0')
+		- store->player->dir_x * PLAYERS_SPEED)] == '0')
+	{
 		store->player->x -= new_x;
+	}
 	if (store->map->map_grid[(int)(store->player->y - store->player->dir_y
 			* PLAYERS_SPEED)][(int)store->player->x] == '0')
 		store->player->y -= new_y;
@@ -52,8 +57,10 @@ static void	ft_move_left(t_data *store)
 	new_x = store->player->vector_x * PLAYERS_SPEED;
 	new_y = store->player->vector_y * PLAYERS_SPEED;
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			- store->player->vector_x * PLAYERS_SPEED)] == '0')
+		- store->player->vector_x * PLAYERS_SPEED)] == '0')
+	{
 		store->player->x -= new_x;
+	}
 	if (store->map->map_grid[(int)(store->player->y - store->player->vector_y
 			* PLAYERS_SPEED)][(int)store->player->x] == '0')
 		store->player->y -= new_y;
@@ -67,8 +74,10 @@ static void	ft_move_right(t_data *store)
 	new_x = store->player->vector_x * PLAYERS_SPEED;
 	new_y = store->player->vector_y * PLAYERS_SPEED;
 	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-			+ store->player->vector_x * PLAYERS_SPEED)] == '0')
+		+ store->player->vector_x * PLAYERS_SPEED)] == '0')
+	{
 		store->player->x += new_x;
+	}
 	if (store->map->map_grid[(int)(store->player->y + store->player->vector_y
 			* PLAYERS_SPEED)][(int)store->player->x] == '0')
 		store->player->y += new_y;
