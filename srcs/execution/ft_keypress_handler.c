@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:55:04 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/14 23:01:40 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 static void	ft_move_forward(t_data *store)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = store->player->dir_x * PLAYERS_SPEED;
 	new_y = store->player->dir_y * PLAYERS_SPEED;
@@ -34,8 +34,8 @@ static void	ft_move_forward(t_data *store)
 
 static void	ft_move_back(t_data *store)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = store->player->dir_x * PLAYERS_SPEED;
 	new_y = store->player->dir_y * PLAYERS_SPEED;
@@ -51,8 +51,8 @@ static void	ft_move_back(t_data *store)
 
 static void	ft_move_left(t_data *store)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = store->player->vector_x * PLAYERS_SPEED;
 	new_y = store->player->vector_y * PLAYERS_SPEED;
@@ -68,8 +68,8 @@ static void	ft_move_left(t_data *store)
 
 static void	ft_move_right(t_data *store)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = store->player->vector_x * PLAYERS_SPEED;
 	new_y = store->player->vector_y * PLAYERS_SPEED;
