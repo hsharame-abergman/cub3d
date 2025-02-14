@@ -1,7 +1,7 @@
-NO textures/wolfenstein/blue_stone.xpm
-SO ./textures/wolfenstein/color_stone.xpm
-WE ./textures/wolfenstein/eagle.xpm
-EA ./textures/wolfenstein/grey_stone.xpm
+NO ./textures/Hanna/cactus.xpm
+SO ./textures/Hanna/planet.xpm
+WE ./textures/Hanna/rabbit.xpm
+EA ./textures/Hanna/ufo.xpm
 
 F 205,105,180
 C 173,216,230

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+         #
+#    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/12 16:31:38 by hsharame         ###   ########.fr        #
+#    Updated: 2025/02/14 21:36:47 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 HEADERS 		= ./header/cub3D.h
 LIBFT			= ./libft/libft.a
 
-FSANITAIZE		= -fsanitize=address,leak,undefined
 DEBUG			= -g3
 CFLAGS			= -Wall -Wextra -Werror $(DEBUG)
 

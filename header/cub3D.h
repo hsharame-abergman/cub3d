@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/13 15:02:42 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:54:57 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,11 @@ typedef struct s_data
 	int			mouse_x;
 }				t_data;
 
-# define WIDTH_TEXTURE 64
-# define HEIGHT_TEXTURE 64
 # define HEIGHT 250
 # define WIDTH 500
 # define PLAYERS_SPEED 0.15
-# define ROTATE_SPEED 0.09
+# define ROTATE_SPEED 0.07
+# define DEFAULT_DOUBLE 0.01
 
 t_texture		*ft_init_texture(void);
 char			*ft_remove_newline(char *str);
@@ -133,17 +132,21 @@ int				ft_destroy_handler(t_data *data);
 void			ft_clear_window(t_data *store, t_texture *main);
 void			ft_mlx_pixel_put(int x, int y, t_texture *t, int color_bin);
 int				ft_draw(t_data *store);
-void			ft_init_drawing(t_data *store, int x);
-void			ft_calculate_step(t_data *store);
-void			ft_calculate_distance(t_data *store);
-void			ft_dda(t_data *store);
-void			ft_calculate_stripe(t_data *store);
+/* ray casting */
+void			ft_init_drawing_params(t_data *store, int x);
+void			ft_calculate_start_step(t_data *store);
+void			ft_calculate_distance_to_wall(t_data *store);
+void			ft_digital_differential_analyzer(t_data *store);
+void			ft_compute_wall_projection(t_data *store);
+/* camera */
 void			ft_look_right(t_data *store);
 void			ft_look_left(t_data *store);
 t_draw			*ft_init_draw(void);
 void			ft_mini_map(t_data *store);
 int				ft_mouse_handler(int x, int y, t_data *store);
-void			ft_draw_texture(t_data *store, int x);
+void			ft_draw_line_of_texture(t_data *store, int x);
+unsigned int	ft_get_tetxure_color(t_data *store);
+void			ft_texture_params_init(t_data *store);
 
 void			find_player(t_data *data, t_map *map);
 bool			check_argv(int argc, char *filename);

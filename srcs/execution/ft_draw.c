@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 14:45:18 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:22:59 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	ft_raycasting(t_data *store)
 	x = -1;
 	while (++x < WIDTH)
 	{
-		ft_init_drawing(store, x);
-		ft_calculate_step(store);
-		ft_dda(store);
-		ft_calculate_stripe(store);
-		ft_draw_texture(store, x);
+		ft_init_drawing_params(store, x);
+		ft_calculate_start_step(store);
+		ft_digital_differential_analyzer(store);
+		ft_compute_wall_projection(store);
+		ft_draw_line_of_texture(store, x);
 	}
 }
 

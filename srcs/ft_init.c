@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/13 15:02:55 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:54:13 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ t_draw	*ft_init_draw(void)
 	draw = malloc(sizeof(t_draw));
 	if (!draw)
 		return (NULL);
-	draw->wallx = 0.01;
+	draw->wallx = DEFAULT_DOUBLE;
 	draw->texx = 0;
 	draw->texy = 0;
-	draw->texpos = 0.01;
-	draw->step = 0.01;
+	draw->texpos = DEFAULT_DOUBLE;
+	draw->step = DEFAULT_DOUBLE;
 	draw->lineh = 0;
 	return (draw);
 }
@@ -76,20 +76,20 @@ t_ray	*init_ray(void)
 	ray = malloc(sizeof(t_ray));
 	if (!ray)
 		return (NULL);
-	ray->raydir_x = 0.01;
-	ray->raydir_y = 0.01;
-	ray->camera = 0.01;
+	ray->raydir_x = DEFAULT_DOUBLE;
+	ray->raydir_y = DEFAULT_DOUBLE;
+	ray->camera = DEFAULT_DOUBLE;
 	ray->map_x = 0;
 	ray->map_y = 0;
-	ray->sidedist_x = 0.01;
-	ray->sidedist_y = 0.01;
-	ray->deltadist_x = 0.01;
-	ray->deltadist_y = 0.01;
+	ray->sidedist_x = DEFAULT_DOUBLE;
+	ray->sidedist_y = DEFAULT_DOUBLE;
+	ray->deltadist_x = DEFAULT_DOUBLE;
+	ray->deltadist_y = DEFAULT_DOUBLE;
 	ray->step_x = 0;
 	ray->step_y = 0;
 	ray->hit = 0;
 	ray->side = 0;
-	ray->walldist = 0.01;
+	ray->walldist = DEFAULT_DOUBLE;
 	ray->start = 0;
 	ray->end = 0;
 	return (ray);
