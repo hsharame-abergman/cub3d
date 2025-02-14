@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/02/13 15:02:42 by hsharame         ###   ########.fr       */
+=======
+/*   Updated: 2025/02/14 21:21:32 by abergman         ###   ########.fr       */
+>>>>>>> 41f883b (feat(texture): edited reading size for textures)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +121,11 @@ typedef struct s_data
 	int			mouse_x;
 }				t_data;
 
-# define WIDTH_TEXTURE 64
-# define HEIGHT_TEXTURE 64
 # define HEIGHT 250
 # define WIDTH 500
 # define PLAYERS_SPEED 0.15
-# define ROTATE_SPEED 0.09
+# define ROTATE_SPEED 0.07
+# define DEFAULT_DOUBLE 0.01
 
 t_texture		*ft_init_texture(void);
 char			*ft_remove_newline(char *str);

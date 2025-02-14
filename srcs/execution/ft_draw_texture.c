@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:38:39 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 18:17:55 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:22:43 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@
 	необходимые для отрисовки текстуры на стене в игре.
 	Она принимает указатель на структуру `t_data`, содержащую все данные игры.
 
-Таким образом,
-	функция `ft_tex_init` инициализирует все необходимые параметры для корректного отображения текстуры на стене,
-	обеспечивая правильное позиционирование и масштабирование текстуры в зависимости от положения и направления игрока.
- */
-
-void	ft_tex_init(t_data *store)
-{
-	/*
 	Первым шагом функция определяет координату `wallx`,
 			которая представляет собой точку пересечения луча со стеной.Если луч пересек вертикальную стену(значение `side` равно 0 или 1),
 			координата `wallx` рассчитывается на основе позиции игрока по оси Y и направления луча по оси Y.В противном случае,
@@ -32,7 +24,32 @@ void	ft_tex_init(t_data *store)
 			координата `wallx` рассчитывается на основе позиции игрока по оси X и направления луча по оси X.Затем значение
 		`wallx` уменьшается на целую часть,
 			чтобы получить дробную часть координаты.
-				*/
+
+	Далее функция вычисляет координату `texx`,
+			которая представляет собой координату текстуры по оси X.Это значение рассчитывается как произведение `wallx` и ширины текстуры `WIDTH_TEXTURE`,
+			округленное до целого числа.Затем функция корректирует значение `texx` в зависимости от направления игрока.Если луч пересек северную или восточную стену(значение `side` равно 0 или 1) и направление игрока по оси X положительное,
+			значение `texx` инвертируется.Аналогично,
+			если луч пересек южную или западную стену(значение `side` равно 2 или 3) и направление игрока по оси Y отрицательное,
+			значение `texx` также инвертируется
+				.
+
+
+	Наконец, функция вычисляет начальную позицию текстуры `texpos`,
+			которая представляет собой координату текстуры по оси Y для верхнего пикселя линии.Это значение рассчитывается на основе начальной координаты `start`,
+			высоты экрана `HEIGHT`,
+			высоты линии `lineh` и шага `step`
+
+	Затем функция вычисляет шаг `step`,
+	который представляет собой количество пикселей текстуры,
+	соответствующее одному пикселю на экране.Это значение рассчитывается как отношение высоты текстуры `HEIGHT_TEXTURE` к высоте линии `lineh`,
+	представляющей стену на экране.
+
+Таким образом,
+функция `ft_tex_init` инициализирует все необходимые параметры для корректного отображения текстуры на стене,
+обеспечивая правильное позиционирование и масштабирование текстуры в зависимости от положения и направления игрока. */
+
+void	ft_tex_init(t_data *store)
+{
 	if (store->ray->side == 0 || store->ray->side == 1)
 		store->draw->wallx = store->player->y + store->ray->walldist
 			* store->ray->raydir_y;
@@ -40,30 +57,17 @@ void	ft_tex_init(t_data *store)
 		store->draw->wallx = store->player->x + store->ray->walldist
 			* store->ray->raydir_x;
 	store->draw->wallx -= floor((store->draw->wallx));
-	/* 	Далее функция вычисляет координату `texx`,
-			которая представляет собой координату текстуры по оси X.Это значение рассчитывается как произведение `wallx` и ширины текстуры `WIDTH_TEXTURE`,
-			округленное до целого числа.Затем функция корректирует значение `texx` в зависимости от направления игрока.Если луч пересек северную или восточную стену(значение `side` равно 0 или 1) и направление игрока по оси X положительное,
-			значение `texx` инвертируется.Аналогично,
-			если луч пересек южную или западную стену(значение `side` равно 2 или 3) и направление игрока по оси Y отрицательное,
-			значение `texx` также инвертируется
-				. */
-	store->draw->texx = (int)(store->draw->wallx * (double)(WIDTH_TEXTURE));
+	store->draw->texx = (int)(store->draw->wallx
+			* (double)(store->north->width));
 	if ((store->ray->side == 0 || store->ray->side == 1)
 		&& store->player->dir_x >= 0)
-		store->draw->texx = WIDTH_TEXTURE - store->draw->texx - 1;
+		store->draw->texx = store->north->width - store->draw->texx - 1;
 	if ((store->ray->side == 2 || store->ray->side == 3)
 		&& store->player->dir_y <= 0)
-		store->draw->texx = WIDTH_TEXTURE - store->draw->texx - 1;
-	/* 	Затем функция вычисляет шаг `step`,
-			который представляет собой количество пикселей текстуры,
-			соответствующее одному пикселю на экране.Это значение рассчитывается как отношение высоты текстуры `HEIGHT_TEXTURE` к высоте линии `lineh`,
-			представляющей стену на экране. */
-	store->draw->step = 1.0 * HEIGHT_TEXTURE / store->draw->lineh;
-/* 	Наконец, функция вычисляет начальную позицию текстуры `texpos`,
-		которая представляет собой координату текстуры по оси Y для верхнего пикселя линии.Это значение рассчитывается на основе начальной координаты `start`,
-		высоты экрана `HEIGHT`,
-		высоты линии `lineh` и шага `step` */
-	store->draw->texpos = (store->ray->start - HEIGHT / 2 + store->draw->lineh / 2) * store->draw->step;
+		store->draw->texx = store->north->width - store->draw->texx - 1;
+	store->draw->step = 1.0 * store->north->height / store->draw->lineh;
+	store->draw->texpos = (store->ray->start - HEIGHT / 2 + store->draw->lineh
+			/ 2) * store->draw->step;
 }
 
 /* Функция `ft_draw_sides` отвечает за определение цвета пикселя текстуры,
@@ -110,16 +114,16 @@ static unsigned int	ft_draw_sides(t_data *store)
 
 	bin_color = 0;
 	if (store->ray->side == 0)
-		bin_color = ((unsigned int *)(store->north->address))[HEIGHT_TEXTURE
+		bin_color = ((unsigned int *)(store->north->address))[store->north->height
 			* store->draw->texy + store->draw->texx];
 	else if (store->ray->side == 1)
-		bin_color = ((unsigned int *)(store->east->address))[HEIGHT_TEXTURE
+		bin_color = ((unsigned int *)(store->east->address))[store->east->height
 			* store->draw->texy + store->draw->texx];
 	else if (store->ray->side == 2)
-		bin_color = ((unsigned int *)(store->south->address))[HEIGHT_TEXTURE
+		bin_color = ((unsigned int *)(store->south->address))[store->south->height
 			* store->draw->texy + store->draw->texx];
 	else if (store->ray->side == 3)
-		bin_color = ((unsigned int *)(store->west->address))[HEIGHT_TEXTURE
+		bin_color = ((unsigned int *)(store->west->address))[store->west->height
 			* store->draw->texy + store->draw->texx];
 	return (bin_color);
 }
@@ -175,8 +179,10 @@ void	ft_draw_texture(t_data *store, int x)
 			continue ;
 		if (isnan(store->draw->texpos) || isinf(store->draw->texpos))
 			store->draw->texpos = 0.0;
-		store->draw->texy = ((int)store->draw->texpos) & (HEIGHT_TEXTURE - 1);
-		store->draw->texy = (int)store->draw->texpos & (HEIGHT_TEXTURE - 1);
+		store->draw->texy = ((int)store->draw->texpos) & (store->north->height
+				- 1);
+		store->draw->texy = (int)store->draw->texpos & (store->north->height
+				- 1);
 		store->draw->texpos += store->draw->step;
 		bin_color = ft_draw_sides(store);
 		ft_mlx_pixel_put(x, y, store->main, bin_color);

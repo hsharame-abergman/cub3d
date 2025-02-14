@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initialisation_textures.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 17:47:36 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:16:43 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	ft_initialisation_textures(t_data *store)
 	int	w;
 	int	h;
 
-	w = 10000;
-	h = 10000;
+	w = 0;
+	h = 0;
 	if (store->north)
 		if (ft_initialisation_north_texture(store, h, w))
 			return (ft_error_msg("north texture can't loaded"), 0);
