@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:33:21 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 16:28:01 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:25:47 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 void	ft_look_right(t_data *store)
 {

@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:38:15 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:50:23 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:24:59 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 unsigned int	ft_get_tetxure_color(t_data *store)
 {

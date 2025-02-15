@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:55:33 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:41:37 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:23:58 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 void	ft_calculate_distance_to_wall(t_data *store)
 {

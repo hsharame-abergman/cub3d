@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:57:53 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:25:33 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:24:07 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 void	ft_calculate_start_step(t_data *store)
 {

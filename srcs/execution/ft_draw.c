@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:22:59 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:24:52 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 void	ft_floor_and_ceiling(t_data *store, int f_color, int c_color)
 {

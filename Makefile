@@ -6,38 +6,38 @@
 #    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/14 21:36:47 by abergman         ###   ########.fr        #
+#    Updated: 2025/02/15 17:32:31 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= cub3D
-UNAME			= $(shell uname)
 
 CC				= @cc
-OBJDIR 			= bin
+OBJDIR 			= ./bin
+INCLUDE_DIR 	= ./header
 SRC				:= $(shell find srcs/ get_next_line/ -type f -name "*.c")
 
 OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 
-HEADERS 		= ./header/cub3D.h
+HEADERS 		= -I$(INCLUDE_DIR) -I./libft
 LIBFT			= ./libft/libft.a
 
 DEBUG			= -g3
-CFLAGS			= -Wall -Wextra -Werror $(DEBUG)
+CFLAGS			= -Wall -Wextra -Werror -o3 $(DEBUG)
 
-RM				= @rm -f
+RM				= @rm
 
 MLX_DIR			= ./mlx
-MLX_LIB			= $(MLX_DIR)/libmlx_$(UNAME).a
+MLX_LIB			= $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 all: $(MLX_LIB) $(NAME)
 
-$(OBJDIR)/%.o: ./%.c $(HEADERS)
+$(OBJDIR)/%.o: ./%.c
 		@mkdir -p $(dir $@)
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJDIR) $(HEADERS) $(OBJS)
+$(NAME): $(LIBFT) $(OBJS)
 		$(CC)  $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX_FLAGS)
 	@echo "$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): You can use './cub3D' for execute."
 
@@ -59,7 +59,7 @@ clean:
 	@make -C ./libft clean --no-print-directory
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) -f $(NAME)
 	@make -C ./libft fclean --no-print-directory
 
 re: fclean all

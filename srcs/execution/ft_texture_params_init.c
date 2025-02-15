@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:39:51 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:32:09 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:25:53 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 void	ft_texture_params_init(t_data *store)
 {

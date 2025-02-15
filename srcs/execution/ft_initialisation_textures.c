@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 21:16:43 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:25:18 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 static int	ft_initialisation_north_texture(t_data *store, int h, int w)
 {

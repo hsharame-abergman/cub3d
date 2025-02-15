@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:27:51 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/12 19:14:45 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:25:36 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 /*
 This code shows a pixel plotting function for a graphics program.

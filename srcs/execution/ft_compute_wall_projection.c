@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:49:34 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 22:26:45 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:24:19 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 void	ft_compute_wall_projection(t_data *store)
 {

@@ -6,11 +6,11 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/14 23:01:40 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:25:24 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/cub3D.h"
+#include "cub3D.h"
 
 /* Checking for a collision with a wall when moving forward.  */
 /* If the player has not encountered the wall, his coordinates are updated. */
