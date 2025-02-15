@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:49:34 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:24:19 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:36:05 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_compute_wall_projection(t_data *store)
 {
 	double	line_height;
 
-	if (store->ray->walldist <= 0.0001f)
+	if (store->ray->walldist <= DEFAULT_DOUBLE)
 	{
-		store->ray->walldist = 0.0001f;
+		store->ray->walldist = DEFAULT_DOUBLE;
 	}
 	line_height = (double)HEIGHT / store->ray->walldist;
 	if (isinf(line_height) || line_height > INT_MAX)
