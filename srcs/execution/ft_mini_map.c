@@ -6,25 +6,30 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:15:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 16:12:04 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:14:24 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+#define SQUARE_SIZE 3
+
 static void	ft_draw_square(int x, int y, t_texture *t, int color)
 {
 	int	i;
 	int	j;
+	int	pixel_x;
+	int	pixel_y;
 
 	i = 0;
-	while (i < 3)
+	while (i < SQUARE_SIZE)
 	{
 		j = 0;
-		while (j < 3)
+		while (j < SQUARE_SIZE)
 		{
-			ft_mlx_pixel_put(x * 3 + i + 17, y * 3 + j + (HEIGHT - HEIGHT / 4),
-				t, color);
+			pixel_x = x * SQUARE_SIZE + i + 17;
+			pixel_y = y * SQUARE_SIZE + j + (HEIGHT - HEIGHT / 4);
+			ft_mlx_pixel_put(pixel_x, pixel_y, t, color);
 			j++;
 		}
 		i++;

@@ -6,17 +6,26 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:38:15 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 17:58:20 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:30 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+/*
+ * This function retrieves the color value from the texture `t` at the
+ * coordinates (`texy`, `texx`) and returns it as an unsigned integer.
+ */
 static unsigned int	ft_write_color(t_texture *t, int texy, int texx)
 {
 	return (((unsigned int *)(t->address))[t->height * texy + texx]);
 }
 
+/*
+ * This function extracts the color value from the texture data stored in the
+ * provided `t_data` structure. The exact mechanism of how the color is
+ * retrieved depends on the implementation details of the `t_data` structure.
+ */
 unsigned int	ft_get_tetxure_color(t_data *store)
 {
 	unsigned int	bin_color;

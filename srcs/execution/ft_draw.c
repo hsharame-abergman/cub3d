@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:24:52 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:05:43 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ void	ft_raycasting(t_data *store)
 
 int	ft_draw(t_data *store)
 {
-	ft_floor_and_ceiling(store, store->map->f_color, store->map->c_color);
-	ft_raycasting(store);
-	mlx_put_image_to_window(store->mlx, store->mlx_win, store->main->image, 0,
-		0);
-	ft_mini_map(store);
+	t_data	*s;
+
+	s = store;
+	ft_floor_and_ceiling(s, s->map->f_color, s->map->c_color);
+	ft_raycasting(s);
+	mlx_put_image_to_window(s->mlx, s->mlx_win, s->main->image, 0, 0);
+	ft_mini_map(s);
 	return (1);
 }

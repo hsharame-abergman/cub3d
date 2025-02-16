@@ -6,12 +6,16 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:34:04 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:25:18 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:50 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+/*
+ * This function sets up the north texture for the game by loading the texture
+ * data and storing it in the provided data structure.
+ */
 static int	ft_initialisation_north_texture(t_data *store, int h, int w)
 {
 	char	*path;

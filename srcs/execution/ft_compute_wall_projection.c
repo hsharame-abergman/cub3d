@@ -6,22 +6,27 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:49:34 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:36:05 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:16 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+/*
+ * This function calculates the projection of walls based on the data
+ * provided in the t_data structure. It is used in the rendering process
+ * to determine how walls should be displayed on the screen.
+ */
 void	ft_compute_wall_projection(t_data *store)
 {
 	double	line_height;
 
-	if (store->ray->walldist <= DEFAULT_DOUBLE)
+	if (store->ray->walldist <= 0)
 	{
 		store->ray->walldist = DEFAULT_DOUBLE;
 	}
 	line_height = (double)HEIGHT / store->ray->walldist;
-	if (isinf(line_height) || line_height > INT_MAX)
+	if (isinf(line_height))
 	{
 		store->draw->lineh = HEIGHT;
 	}

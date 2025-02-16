@@ -6,12 +6,18 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 19:12:16 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/05 19:11:45 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:38:55 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3D.h"
 
+/*
+ * This function allocates memory for a new texture structure and initializes
+ * its fields to default values. The texture structure is used to store
+ * information about a texture, such as its dimensions, pixel data, and other
+ * relevant properties.
+ */
 t_texture	*ft_init_texture(void)
 {
 	t_texture	*new_texture;

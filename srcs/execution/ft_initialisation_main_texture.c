@@ -6,20 +6,37 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:30:48 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:25:10 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:45 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_initialisation_main_texture(t_data *store)
+/*
+ * This function is responsible for initializing the MLX library, which is
+ * used for creating windows, handling events, and rendering graphics. It
+ * sets up the necessary resources and configurations required for the
+ * application to function correctly.
+ */
+static int	init_mlx(t_data *store)
 {
-	store->main = ft_init_texture();
 	store->mlx = mlx_init();
 	if (!store->mlx)
 		return (0);
 	store->mlx_win = mlx_new_window(store->mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!store->mlx_win)
+		return (0);
+	return (1);
+}
+
+/*
+ * This function sets up the main texture required for the application.
+ * It ensures that the texture is properly loaded and ready for use.
+ */
+static int	init_main_texture(t_data *store)
+{
+	store->main = ft_init_texture();
+	if (!store->main)
 		return (0);
 	store->main->image = mlx_new_image(store->mlx, WIDTH, HEIGHT);
 	if (!store->main->image)
@@ -28,6 +45,19 @@ int	ft_initialisation_main_texture(t_data *store)
 			&(store->main->bits_per_pixel), &(store->main->line_length),
 			&(store->main->endian));
 	if (!store->main->address)
+		return (0);
+	return (1);
+}
+
+/*
+ * This function sets up the main texture required for the application
+ * by initializing necessary resources and configurations.
+ */
+int	ft_initialisation_main_texture(t_data *store)
+{
+	if (!init_mlx(store))
+		return (0);
+	if (!init_main_texture(store))
 		return (0);
 	return (1);
 }

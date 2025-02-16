@@ -6,12 +6,17 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:57:53 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 15:21:54 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:12 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+/*
+ * This function determines the step size in the x direction for the ray
+ * based on the player's position and the ray's direction. It updates the
+ * ray structure with the calculated step size.
+ */
 static void	ft_calculate_step_x(t_ray *ray, t_player *p)
 {
 	if (ray->raydir_x < 0)
@@ -26,7 +31,7 @@ static void	ft_calculate_step_x(t_ray *ray, t_player *p)
 	}
 }
 
-static void	ft_calculeta_step_y(t_ray *ray, t_player *p)
+static void	ft_calculate_step_y(t_ray *ray, t_player *p)
 {
 	if (ray->raydir_y < 0)
 	{
@@ -43,5 +48,5 @@ static void	ft_calculeta_step_y(t_ray *ray, t_player *p)
 void	ft_calculate_start_step(t_data *store)
 {
 	ft_calculate_step_x(store->ray, store->player);
-	ft_calculeta_step_y(store->ray, store->player);
+	ft_calculate_step_y(store->ray, store->player);
 }

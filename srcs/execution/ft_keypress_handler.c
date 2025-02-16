@@ -6,15 +6,19 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 16:09:53 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:52 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/* Checking for a collision with a wall when moving forward.  */
-/* If the player has not encountered the wall, his coordinates are updated. */
-
+/*
+ * This function updates the player's position by moving them forward
+ * based on the current direction they are facing. It modifies the
+ * player's coordinates stored in the `t_data` structure.
+ * Checking for a collision with a wall when moving forward.
+ * If the player has not encountered the wall, his coordinates are updated.
+ */
 static void	ft_move_forward(t_data *store)
 {
 	double		new_x;
@@ -97,19 +101,19 @@ static void	ft_move_right(t_data *store)
 
 int	ft_keypress_handler(int keycode, t_data *store)
 {
-	if (keycode == 119 || keycode == 65362)
+	if (keycode == KEY_W || keycode == KEY_UP)
 		ft_move_forward(store);
-	if (keycode == 115 || keycode == 65364)
+	if (keycode == KEY_S || keycode == KEY_DOWN)
 		ft_move_back(store);
-	if (keycode == 97)
+	if (keycode == KEY_A)
 		ft_move_left(store);
-	if (keycode == 100)
+	if (keycode == KEY_D)
 		ft_move_right(store);
-	if (keycode == 65361)
+	if (keycode == KEY_LEFT)
 		ft_look_left(store);
-	if (keycode == 65363)
+	if (keycode == KEY_RIGHT)
 		ft_look_right(store);
-	if (keycode == 65307)
+	if (keycode == KEY_ESC)
 	{
 		ft_clear_window(store, store->main);
 		exit(0);

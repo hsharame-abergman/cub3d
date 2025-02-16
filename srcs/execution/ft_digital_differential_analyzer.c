@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:54:14 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 18:00:20 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:19 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ West 3 -> 2
 
 #include "cub3D.h"
 
+#define STEP_NEGATIVE -1
+#define STEP_POSITIVE 1
+
+/*
+ * This function implements the DDA algorithm to perform line drawing or other
+ * related operations. The DDA algorithm is a simple and efficient algorithm
+ * used in computer graphics to interpolate values over an interval between
+ */
 void	ft_digital_differential_analyzer(t_data *store)
 {
 	while (!store->ray->hit)
@@ -28,18 +36,18 @@ void	ft_digital_differential_analyzer(t_data *store)
 		{
 			store->ray->sidedist_x += store->ray->deltadist_x;
 			store->ray->map_x += store->ray->step_x;
-			if (store->ray->step_x == -1)
+			if (store->ray->step_x == STEP_NEGATIVE)
 				store->ray->side = WEST;
-			else if (store->ray->step_x == 1)
+			else if (store->ray->step_x == STEP_POSITIVE)
 				store->ray->side = EAST;
 		}
 		else
 		{
 			store->ray->sidedist_y += store->ray->deltadist_y;
 			store->ray->map_y += store->ray->step_y;
-			if (store->ray->step_y == -1)
+			if (store->ray->step_y == STEP_NEGATIVE)
 				store->ray->side = NORTH;
-			else if (store->ray->step_y == 1)
+			else if (store->ray->step_y == STEP_POSITIVE)
 				store->ray->side = SOUTH;
 		}
 		if (store->map->map_grid[store->ray->map_y][store->ray->map_x] == WALL)

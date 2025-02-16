@@ -6,12 +6,18 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:38:39 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 17:43:13 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:39:23 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+/*
+ * This function is responsible for drawing a vertical line of texture
+ * on the screen at the specified x-coordinate. It uses the data stored
+ * in the t_data structure to determine the texture and other parameters
+ * required for drawing.
+ */
 void	ft_draw_line_of_texture(t_data *store, int x)
 {
 	int				y;

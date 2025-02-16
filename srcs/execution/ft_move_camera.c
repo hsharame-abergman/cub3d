@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:33:21 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 15:52:00 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:36:52 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_look_right(t_data *store)
 {
-	double		speed;
 	t_player	*p;
+	double		speed;
 	double		old_player_x;
 	double		old_camera_x;
 
@@ -32,8 +32,8 @@ void	ft_look_right(t_data *store)
 
 void	ft_look_left(t_data *store)
 {
-	double		speed;
 	t_player	*p;
+	double		speed;
 	double		old_player_x;
 	double		old_camera_x;
 

@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:56:23 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 16:00:16 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:16:14 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_move_right(t_data *store)
 {
+	t_player	*p;
 	double		old_dir_x;
 	double		old_vector_x;
-	t_player	*p;
 	double		speed;
 
 	speed = ROTATE_SPEED;
@@ -32,9 +32,9 @@ void	ft_move_right(t_data *store)
 
 void	ft_move_left(t_data *store)
 {
+	t_player	*p;
 	double		old_dir_x;
 	double		old_vector_x;
-	t_player	*p;
 	double		speed;
 
 	speed = ROTATE_SPEED;

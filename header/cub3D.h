@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/16 16:52:12 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:23:56 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,16 @@ typedef struct s_data
 # define PLAYERS_SPEED 0.15
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
+
+#define KEY_W 119
+#define KEY_S 115
+#define KEY_A 97
+#define KEY_D 100
+#define KEY_UP 65362
+#define KEY_DOWN 65364
+#define KEY_LEFT 65361
+#define KEY_RIGHT 65363
+#define KEY_ESC 65307
 
 t_texture			*ft_init_texture(void);
 char				*ft_remove_newline(char *str);
