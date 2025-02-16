@@ -6,30 +6,31 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:15:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 20:14:24 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:11:55 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-#define SQUARE_SIZE 3
-
-static void	ft_draw_square(int x, int y, t_texture *t, int color)
+static void	ft_draw_square(int x, int y, t_data *s, int color)
 {
 	int	i;
 	int	j;
 	int	pixel_x;
 	int	pixel_y;
+	int	size;
 
+	size = (HEIGHT / s->map->height) / 5;
 	i = 0;
-	while (i < SQUARE_SIZE)
+	while (i < size)
 	{
 		j = 0;
-		while (j < SQUARE_SIZE)
+		while (j < size)
 		{
-			pixel_x = x * SQUARE_SIZE + i + 17;
-			pixel_y = y * SQUARE_SIZE + j + (HEIGHT - HEIGHT / 4);
-			ft_mlx_pixel_put(pixel_x, pixel_y, t, color);
+			pixel_x = x * size + i + 17;
+			pixel_y = y * size + j - 17;
+			pixel_y += (HEIGHT - (s->map->height * size));
+			ft_mlx_pixel_put(pixel_x, pixel_y, s->main, color);
 			j++;
 		}
 		i++;
@@ -39,22 +40,22 @@ static void	ft_draw_square(int x, int y, t_texture *t, int color)
 static void	ft_draw_map_element(char element, int x, int y, t_data *store)
 {
 	if (element == WALL)
-		ft_draw_square(x, y, store->main, store->map->c_color);
+		ft_draw_square(x, y, store, store->map->c_color);
 	else if (element == FLOOR)
-		ft_draw_square(x, y, store->main, store->map->f_color);
+		ft_draw_square(x, y, store, store->map->f_color);
 }
 
 void	ft_mini_map(t_data *store)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = -1;
-	while (store->map->map_grid[++i])
+	y = -1;
+	while (store->map->map_grid[++y])
 	{
-		j = -1;
-		while (store->map->map_grid[i][++j])
-			ft_draw_map_element(store->map->map_grid[i][j], j, i, store);
+		x = -1;
+		while (store->map->map_grid[y][++x])
+			ft_draw_map_element(store->map->map_grid[y][x], x, y, store);
 	}
-	ft_draw_square(store->player->x, store->player->y, store->main, 0x000);
+	ft_draw_square(store->player->x, store->player->y, store, 0x000);
 }
