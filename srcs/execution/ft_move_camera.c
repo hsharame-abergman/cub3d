@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 20:33:21 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:25:47 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 15:52:00 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,36 @@
 
 void	ft_look_right(t_data *store)
 {
-	double	olddirx;
-	double	oldplanex;
+	double		speed;
+	t_player	*p;
+	double		old_player_x;
+	double		old_camera_x;
 
-	olddirx = store->player->dir_x;
-	oldplanex = store->player->vector_x;
-	store->player->dir_x = store->player->dir_x * cos(PLAYERS_SPEED)
-		- store->player->dir_y * sin(PLAYERS_SPEED);
-	store->player->dir_y = olddirx * sin(PLAYERS_SPEED) + store->player->dir_y
-		* cos(PLAYERS_SPEED);
-	store->player->vector_x = store->player->vector_x * cos(PLAYERS_SPEED)
-		- store->player->vector_y * sin(PLAYERS_SPEED);
-	store->player->vector_y = oldplanex * sin(PLAYERS_SPEED)
-		+ store->player->vector_y * cos(PLAYERS_SPEED);
+	speed = PLAYERS_SPEED;
+	p = store->player;
+	old_player_x = p->dir_x;
+	old_camera_x = p->vector_x;
+	p->dir_x = p->dir_x * cos(speed) - p->dir_y * sin(speed);
+	p->dir_y = old_player_x * sin(speed) + p->dir_y * cos(speed);
+	p->vector_x = p->vector_x * cos(speed) - p->vector_y * sin(speed);
+	p->vector_y = old_camera_x * sin(speed) + p->vector_y * cos(speed);
+	store->player = p;
 }
 
 void	ft_look_left(t_data *store)
 {
-	double	olddirx;
-	double	oldplanex;
+	double		speed;
+	t_player	*p;
+	double		old_player_x;
+	double		old_camera_x;
 
-	olddirx = store->player->dir_x;
-	oldplanex = store->player->vector_x;
-	store->player->dir_x = store->player->dir_x * cos(-PLAYERS_SPEED)
-		- store->player->dir_y * sin(-PLAYERS_SPEED);
-	store->player->dir_y = olddirx * sin(-PLAYERS_SPEED) + store->player->dir_y
-		* cos(-PLAYERS_SPEED);
-	store->player->vector_x = store->player->vector_x * cos(-PLAYERS_SPEED)
-		- store->player->vector_y * sin(-PLAYERS_SPEED);
-	store->player->vector_y = oldplanex * sin(-PLAYERS_SPEED)
-		+ store->player->vector_y * cos(-PLAYERS_SPEED);
+	speed = PLAYERS_SPEED;
+	p = store->player;
+	old_player_x = p->dir_x;
+	old_camera_x = p->vector_x;
+	p->dir_x = p->dir_x * cos(-speed) - p->dir_y * sin(-speed);
+	p->dir_y = old_player_x * sin(-speed) + p->dir_y * cos(-speed);
+	p->vector_x = p->vector_x * cos(-speed) - p->vector_y * sin(-speed);
+	p->vector_y = old_camera_x * sin(-speed) + p->vector_y * cos(-speed);
+	store->player = p;
 }

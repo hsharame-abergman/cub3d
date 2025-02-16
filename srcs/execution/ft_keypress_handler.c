@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:25:24 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:09:53 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,70 +17,82 @@
 
 static void	ft_move_forward(t_data *store)
 {
-	double	new_x;
-	double	new_y;
+	double		new_x;
+	double		new_y;
+	t_player	*p;
+	char		**grid;
+	double		speed;
 
-	new_x = store->player->dir_x * PLAYERS_SPEED;
-	new_y = store->player->dir_y * PLAYERS_SPEED;
-	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-		+ store->player->dir_x * PLAYERS_SPEED)] == '0')
-	{
-		store->player->x += new_x;
-	}
-	if (store->map->map_grid[(int)(store->player->y + store->player->dir_y
-			* PLAYERS_SPEED)][(int)store->player->x] == '0')
-		store->player->y += new_y;
+	grid = store->map->map_grid;
+	speed = PLAYERS_SPEED;
+	p = store->player;
+	new_x = p->dir_x * speed;
+	new_y = p->dir_y * speed;
+	if (grid[(int)p->y][(int)(p->x + p->dir_x * speed)] != WALL)
+		p->x += new_x;
+	if (grid[(int)(p->y + p->dir_y * speed)][(int)p->x] != WALL)
+		p->y += new_y;
+	store->player = p;
 }
 
 static void	ft_move_back(t_data *store)
 {
-	double	new_x;
-	double	new_y;
+	double		new_x;
+	double		new_y;
+	t_player	*p;
+	char		**grid;
+	double		speed;
 
-	new_x = store->player->dir_x * PLAYERS_SPEED;
-	new_y = store->player->dir_y * PLAYERS_SPEED;
-	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-		- store->player->dir_x * PLAYERS_SPEED)] == '0')
-	{
-		store->player->x -= new_x;
-	}
-	if (store->map->map_grid[(int)(store->player->y - store->player->dir_y
-			* PLAYERS_SPEED)][(int)store->player->x] == '0')
-		store->player->y -= new_y;
+	grid = store->map->map_grid;
+	speed = PLAYERS_SPEED;
+	p = store->player;
+	new_x = p->dir_x * speed;
+	new_y = p->dir_y * speed;
+	if (grid[(int)p->y][(int)(p->x - p->dir_x * speed)] != WALL)
+		p->x -= new_x;
+	if (grid[(int)(p->y - p->dir_y * speed)][(int)p->x] != WALL)
+		p->y -= new_y;
+	store->player = p;
 }
 
 static void	ft_move_left(t_data *store)
 {
-	double	new_x;
-	double	new_y;
+	double		new_x;
+	double		new_y;
+	t_player	*p;
+	char		**grid;
+	double		speed;
 
-	new_x = store->player->vector_x * PLAYERS_SPEED;
-	new_y = store->player->vector_y * PLAYERS_SPEED;
-	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-		- store->player->vector_x * PLAYERS_SPEED)] == '0')
-	{
-		store->player->x -= new_x;
-	}
-	if (store->map->map_grid[(int)(store->player->y - store->player->vector_y
-			* PLAYERS_SPEED)][(int)store->player->x] == '0')
-		store->player->y -= new_y;
+	grid = store->map->map_grid;
+	speed = PLAYERS_SPEED;
+	p = store->player;
+	new_x = p->vector_x * speed;
+	new_y = p->vector_y * speed;
+	if (grid[(int)p->y][(int)(p->x - p->vector_x * speed)] == '0')
+		p->x -= new_x;
+	if (grid[(int)(p->y - p->vector_y * speed)][(int)p->x] == '0')
+		p->y -= new_y;
+	store->player = p;
 }
 
 static void	ft_move_right(t_data *store)
 {
-	double	new_x;
-	double	new_y;
+	double		new_x;
+	double		new_y;
+	t_player	*p;
+	char		**grid;
+	double		speed;
 
-	new_x = store->player->vector_x * PLAYERS_SPEED;
-	new_y = store->player->vector_y * PLAYERS_SPEED;
-	if (store->map->map_grid[(int)store->player->y][(int)(store->player->x
-		+ store->player->vector_x * PLAYERS_SPEED)] == '0')
-	{
-		store->player->x += new_x;
-	}
-	if (store->map->map_grid[(int)(store->player->y + store->player->vector_y
-			* PLAYERS_SPEED)][(int)store->player->x] == '0')
-		store->player->y += new_y;
+	grid = store->map->map_grid;
+	speed = PLAYERS_SPEED;
+	p = store->player;
+	new_x = p->vector_x * speed;
+	new_y = p->vector_y * speed;
+	if (grid[(int)p->y][(int)(p->x + p->vector_x * speed)] == '0')
+		p->x += new_x;
+	if (grid[(int)(p->y + p->vector_y * speed)][(int)p->x] == '0')
+		p->y += new_y;
+	store->player = p;
 }
 
 int	ft_keypress_handler(int keycode, t_data *store)

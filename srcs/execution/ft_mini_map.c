@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:15:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:25:30 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:12:04 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	ft_draw_square(int x, int y, t_texture *t, int color)
 
 static void	ft_draw_map_element(char element, int x, int y, t_data *store)
 {
-	if (element == '1')
+	if (element == WALL)
 		ft_draw_square(x, y, store->main, store->map->c_color);
-	else if (element == '0')
+	else if (element == FLOOR)
 		ft_draw_square(x, y, store->main, store->map->f_color);
 }
 

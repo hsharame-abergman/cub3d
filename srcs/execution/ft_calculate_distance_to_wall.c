@@ -6,28 +6,26 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:55:33 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/15 17:38:26 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:54:17 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_calculate_distance_to_wall(t_data *store)
+static double	ft_calculate_distance(t_ray *ray, t_player *p)
 {
 	double	dist;
 
-	if (store->ray->side == 0 || store->ray->side == 1)
-	{
-		dist = (store->ray->map_x - store->player->x + (1 - store->ray->step_x)
-				/ 2) / store->ray->raydir_x;
-		store->ray->walldist = fabs(dist);
-	}
+	if (ray->side == NORTH || ray->side == EAST)
+		dist = (ray->map_x - p->x + (1 - ray->step_x) / 2) / ray->raydir_x;
 	else
-	{
-		dist = (store->ray->map_y - store->player->y + (1 - store->ray->step_y)
-				/ 2) / store->ray->raydir_y;
-		store->ray->walldist = fabs(dist);
-	}
+		dist = (ray->map_y - p->y + (1 - ray->step_y) / 2) / ray->raydir_y;
+	return (fabs(dist));
+}
+
+void	ft_calculate_distance_to_wall(t_data *store)
+{
+	store->ray->walldist = ft_calculate_distance(store->ray, store->player);
 	if (store->ray->walldist < DEFAULT_DOUBLE)
 		store->ray->walldist = DEFAULT_DOUBLE;
 }

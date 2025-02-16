@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/14 22:54:57 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:52:12 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,157 +24,159 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_ray
-{
-	double		camera;
-	double		raydir_x;
-	double		raydir_y;
-	int			map_x;
-	int			map_y;
-	double		sidedist_x;
-	double		sidedist_y;
-	double		deltadist_x;
-	double		deltadist_y;
-	int			step_x;
-	int			step_y;
-	int			hit;
-	int			side;
-	double		walldist;
-	int			start;
-	int			end;
-}				t_ray;
-
-typedef struct s_draw
-{
-	int			lineh;
-	double		wallx;
-	int			texx;
-	int			texy;
-	double		texpos;
-	double		step;
-}				t_draw;
-
 typedef enum e_texture_type
 {
 	NORTH = 0,
 	SOUTH,
 	WEST,
 	EAST
-}				t_texture_type;
+}					t_texture_type;
+
+typedef struct s_ray
+{
+	double			camera;
+	double			raydir_x;
+	double			raydir_y;
+	int				map_x;
+	int				map_y;
+	double			sidedist_x;
+	double			sidedist_y;
+	double			deltadist_x;
+	double			deltadist_y;
+	int				step_x;
+	int				step_y;
+	bool			hit;
+	t_texture_type	side;
+	double			walldist;
+	int				start;
+	int				end;
+}					t_ray;
+
+typedef struct s_draw
+{
+	int				lineh;
+	double			wallx;
+	int				texx;
+	int				texy;
+	double			texpos;
+	double			step;
+}					t_draw;
 
 typedef struct s_texture
 {
-	char		*path;
-	void		*image;
-	int			bits_per_pixel;
-	char		*address;
-	int			width;
-	int			height;
-	int			line_length;
-	int			endian;
-}				t_texture;
+	char			*path;
+	void			*image;
+	int				bits_per_pixel;
+	char			*address;
+	int				width;
+	int				height;
+	int				line_length;
+	int				endian;
+}					t_texture;
 
 typedef struct s_map
 {
-	int			fd;
-	char		*filename;
-	int			height;
-	int			length;
-	int			f_color;
-	int			c_color;
-	int			rgb[3];
-	int			index;
-	char		**initial_map;
-	char		**map_grid;
-	int			player;
-}				t_map;
+	int				fd;
+	char			*filename;
+	int				height;
+	int				length;
+	int				f_color;
+	int				c_color;
+	int				rgb[3];
+	int				index;
+	char			**initial_map;
+	char			**map_grid;
+	int				player;
+}					t_map;
 
 typedef struct s_player
 {
-	double		x;
-	double		y;
-	double		dir_x;
-	double		dir_y;
-	double		vector_x;
-	double		vector_y;
-	double		mouse_x;
-	double		mouse_y;
-}				t_player;
+	double			x;
+	double			y;
+	double			dir_x;
+	double			dir_y;
+	double			vector_x;
+	double			vector_y;
+	double			mouse_x;
+	double			mouse_y;
+}					t_player;
 typedef struct s_data
 {
-	void		*mlx;
-	void		*mlx_win;
-	char		*filename;
-	t_player	*player;
-	t_ray		*ray;
-	t_map		*map;
-	t_texture	*north;
-	t_texture	*south;
-	t_texture	*west;
-	t_texture	*east;
-	t_texture	*main;
-	t_draw		*draw;
-	int			mouse_x;
-}				t_data;
+	void			*mlx;
+	void			*mlx_win;
+	char			*filename;
+	t_player		*player;
+	t_ray			*ray;
+	t_map			*map;
+	t_texture		*north;
+	t_texture		*south;
+	t_texture		*west;
+	t_texture		*east;
+	t_texture		*main;
+	t_draw			*draw;
+	int				mouse_x;
+}					t_data;
 
+# define WALL '1'
+# define FLOOR '0'
 # define HEIGHT 250
 # define WIDTH 500
 # define PLAYERS_SPEED 0.15
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
 
-t_texture		*ft_init_texture(void);
-char			*ft_remove_newline(char *str);
-int				ft_initialisation_textures(t_data *store);
-int				ft_keypress_handler(int keynum, t_data *data);
-int				ft_initialisation_main_texture(t_data *store);
-int				ft_destroy_handler(t_data *data);
-void			ft_clear_window(t_data *store, t_texture *main);
-void			ft_mlx_pixel_put(int x, int y, t_texture *t, int color_bin);
-int				ft_draw(t_data *store);
+t_texture			*ft_init_texture(void);
+char				*ft_remove_newline(char *str);
+int					ft_initialisation_textures(t_data *store);
+int					ft_keypress_handler(int keynum, t_data *data);
+int					ft_initialisation_main_texture(t_data *store);
+int					ft_destroy_handler(t_data *data);
+void				ft_clear_window(t_data *store, t_texture *main);
+void				ft_mlx_pixel_put(int x, int y, t_texture *t, int color_bin);
+int					ft_draw(t_data *store);
 /* ray casting */
-void			ft_init_drawing_params(t_data *store, int x);
-void			ft_calculate_start_step(t_data *store);
-void			ft_calculate_distance_to_wall(t_data *store);
-void			ft_digital_differential_analyzer(t_data *store);
-void			ft_compute_wall_projection(t_data *store);
+void				ft_init_drawing_params(t_data *store, int x);
+void				ft_calculate_start_step(t_data *store);
+void				ft_calculate_distance_to_wall(t_data *store);
+void				ft_digital_differential_analyzer(t_data *store);
+void				ft_compute_wall_projection(t_data *store);
 /* camera */
-void			ft_look_right(t_data *store);
-void			ft_look_left(t_data *store);
-t_draw			*ft_init_draw(void);
-void			ft_mini_map(t_data *store);
-int				ft_mouse_handler(int x, int y, t_data *store);
-void			ft_draw_line_of_texture(t_data *store, int x);
-unsigned int	ft_get_tetxure_color(t_data *store);
-void			ft_texture_params_init(t_data *store);
+void				ft_look_right(t_data *store);
+void				ft_look_left(t_data *store);
+t_draw				*ft_init_draw(void);
+void				ft_mini_map(t_data *store);
+int					ft_mouse_handler(int x, int y, t_data *store);
+void				ft_draw_line_of_texture(t_data *store, int x);
+unsigned int		ft_get_tetxure_color(t_data *store);
+void				ft_texture_params_init(t_data *store);
 
-void			find_player(t_data *data, t_map *map);
-bool			check_argv(int argc, char *filename);
-bool			init_data(t_data *data, char *file);
-bool			check_extension(char *filename, char *extension);
-void			ft_error_msg(char *str);
-void			free_exit(t_data *data, char *error);
-bool			parsing(t_data *data);
-bool			map_is_valid(t_data *data, t_map *map);
-bool			extract_info(t_map *map);
-void			fill_copy_lines(t_map *map);
-int				rgb_to_int(int r, int g, int b);
-bool			check_textures_colors(t_data *data, t_map *map);
-int				check_number(char **lines);
-bool			find_grid(t_map *map, char **dirty_map);
-void			display_grid(char **grid);
-bool			find_colors(t_map *map);
-void			free_tab(char **tab);
-bool			ft_isspace(char c);
-bool			check_top_bottom_walls(char *str);
-bool			check_no_output(char **map);
-int				is_player(int c);
-bool			check_grid_map(t_map *map);
-bool			check_size_map(t_map *map);
-bool			check_walls(t_map *map);
-bool			check_player_other_char(t_map *map);
-int				rgb_to_int(int r, int g, int b);
+void				find_player(t_data *data, t_map *map);
+bool				check_argv(int argc, char *filename);
+bool				init_data(t_data *data, char *file);
+bool				check_extension(char *filename, char *extension);
+void				ft_error_msg(char *str);
+void				free_exit(t_data *data, char *error);
+bool				parsing(t_data *data);
+bool				map_is_valid(t_data *data, t_map *map);
+bool				extract_info(t_map *map);
+void				fill_copy_lines(t_map *map);
+int					rgb_to_int(int r, int g, int b);
+bool				check_textures_colors(t_data *data, t_map *map);
+int					check_number(char **lines);
+bool				find_grid(t_map *map, char **dirty_map);
+void				display_grid(char **grid);
+bool				find_colors(t_map *map);
+void				free_tab(char **tab);
+bool				ft_isspace(char c);
+bool				check_top_bottom_walls(char *str);
+bool				check_no_output(char **map);
+int					is_player(int c);
+bool				check_grid_map(t_map *map);
+bool				check_size_map(t_map *map);
+bool				check_walls(t_map *map);
+bool				check_player_other_char(t_map *map);
+int					rgb_to_int(int r, int g, int b);
 
-t_player		*init_player(void);
+t_player			*init_player(void);
 
 #endif

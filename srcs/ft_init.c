@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/14 22:54:13 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:33:53 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ t_ray	*init_ray(void)
 	ray->deltadist_y = DEFAULT_DOUBLE;
 	ray->step_x = 0;
 	ray->step_y = 0;
-	ray->hit = 0;
-	ray->side = 0;
+	ray->hit = false;
+	ray->side = NORTH;
 	ray->walldist = DEFAULT_DOUBLE;
 	ray->start = 0;
 	ray->end = 0;
