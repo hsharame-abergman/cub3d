@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:38:15 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 17:09:59 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:58:20 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ unsigned int	ft_get_tetxure_color(t_data *store)
 	bin_color = 0;
 	side = store->ray->side;
 	draw = store->draw;
-	if (side == NORTH)
+	if (side == WEST)
 		bin_color = ft_write_color(store->west, draw->texy, draw->texx);
 	else if (side == EAST)
 		bin_color = ft_write_color(store->east, draw->texy, draw->texx);
-	else if (side == SOUTH)
+	else if (side == NORTH)
 		bin_color = ft_write_color(store->north, draw->texy, draw->texx);
-	else if (side == WEST)
+	else if (side == SOUTH)
 		bin_color = ft_write_color(store->south, draw->texy, draw->texx);
 	return (bin_color);
 }

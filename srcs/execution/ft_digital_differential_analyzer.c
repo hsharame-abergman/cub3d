@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:54:14 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 17:10:04 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 18:00:20 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_digital_differential_analyzer(t_data *store)
 			store->ray->sidedist_x += store->ray->deltadist_x;
 			store->ray->map_x += store->ray->step_x;
 			if (store->ray->step_x == -1)
-				store->ray->side = NORTH;
+				store->ray->side = WEST;
 			else if (store->ray->step_x == 1)
 				store->ray->side = EAST;
 		}
@@ -38,9 +38,9 @@ void	ft_digital_differential_analyzer(t_data *store)
 			store->ray->sidedist_y += store->ray->deltadist_y;
 			store->ray->map_y += store->ray->step_y;
 			if (store->ray->step_y == -1)
-				store->ray->side = SOUTH;
+				store->ray->side = NORTH;
 			else if (store->ray->step_y == 1)
-				store->ray->side = WEST;
+				store->ray->side = SOUTH;
 		}
 		if (store->map->map_grid[store->ray->map_y][store->ray->map_x] == WALL)
 			store->ray->hit = true;
