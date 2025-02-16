@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:39:51 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 17:01:17 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:41:19 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	calculate_texx(t_data *store)
 	width = store->north->width;
 	side = store->ray->side;
 	store->draw->texx = (int)(store->draw->wallx * (double)(width));
-	if ((side == NORTH || side == EAST) && store->player->dir_x >= 0)
+	if ((side == NORTH || side == EAST) && store->player->dir_x < 0)
 		store->draw->texx = width - store->draw->texx - 1;
-	if ((side == SOUTH || side == WEST) && store->player->dir_y <= 0)
+	if ((side == SOUTH || side == WEST) && store->player->dir_y > 0)
 		store->draw->texx = width - store->draw->texx - 1;
 }
 

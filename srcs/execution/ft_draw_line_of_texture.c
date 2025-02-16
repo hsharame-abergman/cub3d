@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:38:39 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 17:27:07 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:43:13 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_draw_line_of_texture(t_data *store, int x)
 {
-	unsigned int	bin_color;
-	t_draw			*draw;
 	int				y;
+	t_draw			*draw;
+	unsigned int	bin_color;
 	int				height_tex;
 
-	height_tex = store->north->height;
 	draw = store->draw;
-	ft_texture_params_init(store);
 	y = store->ray->start - 1;
+	ft_texture_params_init(store);
+	height_tex = store->north->height;
 	while (++y <= store->ray->end)
 	{
 		if (y < 0 || y >= HEIGHT)

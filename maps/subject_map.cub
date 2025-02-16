@@ -3,8 +3,8 @@ SO ./textures/test/south.xpm
 WE ./textures/test/west.xpm
 EA ./textures/test/east.xpm
 
-F 220,100,0
-C 225,30,0
+F 205,105,180
+C 173,216,230
 
         1111111111111111111111111
         1000000000110000000000001
