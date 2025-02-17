@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:07:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/12 17:37:04 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:10:17 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	free_exit(t_data *data, char *error)
 		free(data->map);
 	if (error)
 		ft_error_msg(error);
-	exit(0);
+	//exit(0);
 }
 
 void	ft_error_msg(char *str)
