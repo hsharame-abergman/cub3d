@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_initialisation_main_texture.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:30:48 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 20:39:45 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:05:31 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

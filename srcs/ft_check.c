@@ -6,11 +6,20 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:14:32 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/03 19:00:11 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:23:32 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/cub3D.h"
+
+bool	ft_check_size_of_window(void)
+{
+	if (WIDTH >= 1920 || HEIGHT >= 1080)
+		return (false);
+	if (HEIGHT <= 100 || WIDTH <= 100)
+		return (false);
+	return (true);
+}
 
 bool	check_argv(int argc, char *filename)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/16 20:23:56 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/17 12:22:28 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,15 +125,15 @@ typedef struct s_data
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
 
-#define KEY_W 119
-#define KEY_S 115
-#define KEY_A 97
-#define KEY_D 100
-#define KEY_UP 65362
-#define KEY_DOWN 65364
-#define KEY_LEFT 65361
-#define KEY_RIGHT 65363
-#define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_ESC 65307
 
 t_texture			*ft_init_texture(void);
 char				*ft_remove_newline(char *str);
@@ -162,6 +162,7 @@ void				ft_texture_params_init(t_data *store);
 
 void				find_player(t_data *data, t_map *map);
 bool				check_argv(int argc, char *filename);
+bool				ft_check_size_of_window(void);
 bool				init_data(t_data *data, char *file);
 bool				check_extension(char *filename, char *extension);
 void				ft_error_msg(char *str);

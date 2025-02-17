@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
+#    By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/15 17:33:14 by abergman         ###   ########.fr        #
+#    Updated: 2025/02/17 12:09:32 by hsharame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= cub3D
 
-CC				= @cc
+CC				= cc
 OBJDIR 			= ./bin
 INCLUDE_DIR 	= ./header
+INCLUDE_FILE	= $(INCLUDE_DIR)/cub3D.h
 SRC				:= $(shell find srcs/ get_next_line/ -type f -name "*.c")
 
 OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
@@ -33,11 +34,11 @@ MLX_FLAGS		= -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 all: $(MLX_LIB) $(NAME)
 
-$(OBJDIR)/%.o: ./%.c
+$(OBJDIR)/%.o: ./%.c $(INCLUDE_FILE)
 		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(LIBFT)  $(OBJDIR) $(OBJS)
 		$(CC)  $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX_FLAGS)
 	@echo "$(GREEN)$(BOLD)[ ★ SUCCESS ★ ]$(BOLD_R)$(RESET): You can use './cub3D' for execute."
 

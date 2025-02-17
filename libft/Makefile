@@ -32,7 +32,7 @@ bonus: $(OBJSALL) libft.h
 all: $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJSALL)
 
 fclean: clean
 	@rm -rf $(NAME)
