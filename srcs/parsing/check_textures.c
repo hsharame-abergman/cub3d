@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/13 15:02:29 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:44:26 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ bool	valide_texture(t_data *data, char *line)
 	i = check_number(separated);
 	if (separated && i != 2)
 		return (free_tab(separated), true);
-	if (!ft_strncmp(separated[0], "NO", 2) && !data->north->path)
+	if (!ft_strncmp(separated[0], "NO", 3) && !data->north->path)
 		data->north->path = check_acces(separated[1], "north");
-	else if (!ft_strncmp(separated[0], "SO", 2) && !data->south->path)
+	else if (!ft_strncmp(separated[0], "SO", 3) && !data->south->path)
 		data->south->path = check_acces(separated[1], "south");
-	else if (!ft_strncmp(separated[0], "WE", 2) && !data->west->path)
+	else if (!ft_strncmp(separated[0], "WE", 3) && !data->west->path)
 		data->west->path = check_acces(separated[1], "west");
-	else if (!ft_strncmp(separated[0], "EA", 2) && !data->east->path)
+	else if (!ft_strncmp(separated[0], "EA", 3) && !data->east->path)
 		data->east->path = check_acces(separated[1], "east");
 	else
 		return (ft_putendl_fd("Unknown key", 2),
@@ -80,15 +80,21 @@ bool	valide_texture(t_data *data, char *line)
 bool	find_textures(t_data *data, t_map *map)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (map->initial_map[i][0] != 'F')
+	while (map->initial_map[i])
 	{
-		if (!valide_texture(data, map->initial_map[i]))
+		j = 0;
+		while (ft_isspace(map->initial_map[i][j]))
+			j++;
+		if (map->initial_map[i][j] == '1')
+			break ;
+		if ((map->initial_map[i][j] != 'F' && map->initial_map[i][j] != 'C')
+			&& !valide_texture(data, map->initial_map[i]))
 			return (false);
 		i++;
 	}
-	map->index = i;
 	if (!data->north->path || !data->south->path || !data->west->path
 		|| !data->east->path)
 		return (false);

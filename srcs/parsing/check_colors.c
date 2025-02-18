@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:18:13 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/13 15:14:02 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:41:44 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,20 +104,22 @@ bool	find_colors(t_map *map)
 	int	j;
 	int	colors;
 
-	i = map->index;
 	colors = 0;
+	i = 0;
 	while (map->initial_map[i])
 	{	
 		j = 0;
 		while (ft_isspace(map->initial_map[i][j]))
 			j++;
-		if (map->initial_map[i][j] == '\0' ||
-				map->initial_map[i][j] == '1' || map->initial_map[i][j] == '\n')
+		if (map->initial_map[i][j] == '1')
 			break ;
-		if (!valide_color(map, map->initial_map[i]))
-			return (false);
-		else
+		if (ft_isalpha(map->initial_map[i][j])
+			&& ft_isspace(map->initial_map[i][++j]))
+		{
+			if (!valide_color(map, map->initial_map[i]))
+				return (false);
 			colors++;
+		}
 		i++;
 	}
 	if (colors != 2 || !map->f_color || !map->c_color)

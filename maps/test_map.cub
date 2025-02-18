@@ -1,12 +1,22 @@
+C       2,89,5
 NO ./textures/wolfenstein/blue_stone.xpm
+
+
 SO ./textures/wolfenstein/blue_stone.xpm
-WE ./textures/wolfenstein/eagle.xpm
-EA ./textures/wolfenstein/grey_stone.xpm
  
-F 255,100,0
-C 2,89,5
 
 
+
+
+
+
+
+
+EA ./textures/wolfenstein/grey_stone.xpm
+
+
+
+WE ./textures/wolfenstein/eagle.xpm
 
 
 
@@ -29,3 +39,6 @@ C 2,89,5
 11000001110101011111011110N0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111
+
+F 5,0,7
+

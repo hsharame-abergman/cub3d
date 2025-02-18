@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/17 12:22:28 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:20:39 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ typedef struct s_map
 	int				f_color;
 	int				c_color;
 	int				rgb[3];
-	int				index;
 	char			**initial_map;
 	char			**map_grid;
 	int				player;
