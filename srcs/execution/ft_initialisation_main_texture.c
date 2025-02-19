@@ -55,7 +55,6 @@ static int	init_main_texture(t_data *store)
  */
 int	ft_initialisation_main_texture(t_data *store)
 {
-	store->animation->active = (store->map->f_color + store->map->c_color) % 2;
 	if (!init_mlx(store))
 		return (0);
 	if (!init_main_texture(store))

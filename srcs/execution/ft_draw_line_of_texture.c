@@ -12,6 +12,16 @@
 
 #include "cub3D.h"
 
+static int	ft_random_wall_sprite(t_data *store)
+{
+	int	is_wall;
+	int	every_ten;
+
+	is_wall = store->map->map_grid[store->ray->map_y][store->ray->map_x] != WALL;
+	every_ten = (store->ray->map_x + store->ray->map_y) % 10 != 0;
+	return (is_wall || !LOAD_SPRITES || every_ten);
+}
+
 static void	ft_draw_line(t_data *s, t_sprite *frame, int height_tex, int x)
 {
 	int				y;
@@ -26,8 +36,7 @@ static void	ft_draw_line(t_data *s, t_sprite *frame, int height_tex, int x)
 			s->draw->texpos = 0.0;
 		s->draw->texy = ((int)s->draw->texpos) & (height_tex - 1);
 		s->draw->texpos += s->draw->step;
-		if (s->map->map_grid[s->ray->map_y][s->ray->map_x] != '1'
-			|| !s->animation->active)
+		if (ft_random_wall_sprite(s))
 		{
 			color = ft_get_tetxure_color(s);
 		}
@@ -54,8 +63,7 @@ void	ft_draw_line_of_texture(t_data *store, int x)
 
 	frame = NULL;
 	ft_texture_params_init(store);
-	if (store->map->map_grid[store->ray->map_y][store->ray->map_x] == '1'
-		&& store->animation->active)
+	if (!ft_random_wall_sprite(store))
 	{
 		ft_update_sprite_animation(store->animation);
 		frame = &store->animation->frames[store->animation->current_frame];

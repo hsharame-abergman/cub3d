@@ -114,7 +114,6 @@ typedef struct s_sprite
 
 typedef struct s_animation
 {
-	int				active;
 	t_sprite		*frames;
 	int				frame_count;
 	int				current_frame;
@@ -148,6 +147,7 @@ typedef struct s_data
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
 # define FRAME_DELAY 100000
+# define LOAD_SPRITES 1
 
 # define KEY_W 119
 # define KEY_S 115
