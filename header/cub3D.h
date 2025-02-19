@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/17 17:20:39 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:19:04 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,29 @@ typedef struct s_player
 	double			mouse_x;
 	double			mouse_y;
 }					t_player;
+
+typedef struct s_sprite
+{
+	void			*image;
+	char			*path;
+	int				width;
+	int				height;
+	char			*address;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_sprite;
+
+typedef struct s_animation
+{
+	int				active;
+	t_sprite		*frames;
+	int				frame_count;
+	int				current_frame;
+	int				frame_delay;
+	int				frame_timer;
+}					t_animation;
+
 typedef struct s_data
 {
 	void			*mlx;
@@ -114,6 +137,7 @@ typedef struct s_data
 	t_texture		*main;
 	t_draw			*draw;
 	int				mouse_x;
+	t_animation		*animation;
 }					t_data;
 
 # define WALL '1'
@@ -123,6 +147,7 @@ typedef struct s_data
 # define PLAYERS_SPEED 0.15
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
+# define FRAME_DELAY 100000
 
 # define KEY_W 119
 # define KEY_S 115
@@ -188,5 +213,8 @@ bool				check_player_other_char(t_map *map);
 int					rgb_to_int(int r, int g, int b);
 
 t_player			*init_player(void);
+
+int					ft_initialisation_sprites(t_data *store, int h, int w);
+void				ft_update_sprite_animation(t_animation *animation);
 
 #endif

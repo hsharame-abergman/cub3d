@@ -16,7 +16,42 @@ CC				= cc
 OBJDIR 			= ./bin
 INCLUDE_DIR 	= ./header
 INCLUDE_FILE	= $(INCLUDE_DIR)/cub3D.h
-SRC				:= $(shell find srcs/ get_next_line/ -type f -name "*.c")
+SRC				:= ./get_next_line/get_next_line.c \
+./get_next_line/get_next_line_utils.c \
+./srcs/utils.c \
+./srcs/main.c \
+./srcs/ft_init.c \
+./srcs/ft_init_tuxture.c \
+./srcs/ft_check.c \
+./srcs/free_exit_error.c \
+./srcs/parsing/pars_utils.c \
+./srcs/parsing/pars_player.c \
+./srcs/parsing/ft_parsing.c \
+./srcs/parsing/find_grid.c \
+./srcs/parsing/check_textures.c \
+./srcs/parsing/check_map.c \
+./srcs/parsing/check_grid.c \
+./srcs/parsing/check_colors.c \
+./srcs/execution/ft_update_sprite_animation.c \
+./srcs/execution/ft_texture_params_init.c \
+./srcs/execution/ft_move_camera.c \
+./srcs/execution/ft_mouse_handler.c \
+./srcs/execution/ft_mlx_pixel_put.c \
+./srcs/execution/ft_mini_map.c \
+./srcs/execution/ft_keypress_handler.c \
+./srcs/execution/ft_initialisation_textures.c \
+./srcs/execution/ft_initialisation_main_texture.c \
+./srcs/execution/ft_init_sprite_frames.c \
+./srcs/execution/ft_init_drawing_params.c \
+./srcs/execution/ft_get_tetxure_color.c \
+./srcs/execution/ft_draw.c \
+./srcs/execution/ft_draw_line_of_texture.c \
+./srcs/execution/ft_digital_differential_analyzer.c \
+./srcs/execution/ft_destroy_handler.c \
+./srcs/execution/ft_compute_wall_projection.c \
+./srcs/execution/ft_clear_window.c \
+./srcs/execution/ft_calculate_start_step.c \
+./srcs/execution/ft_calculate_distance_to_wall.c
 
 OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 

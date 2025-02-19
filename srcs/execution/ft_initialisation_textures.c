@@ -103,5 +103,6 @@ int	ft_initialisation_textures(t_data *store)
 	if (store->west)
 		if (ft_initialisation_west_texture(store, h, w))
 			return (ft_error_msg("west texture can't loaded"), 0);
+	ft_initialisation_sprites(store, h, w);
 	return (1);
 }

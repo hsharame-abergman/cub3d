@@ -12,6 +12,35 @@
 
 #include "cub3D.h"
 
+static void	ft_draw_line(t_data *s, t_sprite *frame, int height_tex, int x)
+{
+	int				y;
+	unsigned int	color;
+
+	y = s->ray->start - 1;
+	while (++y <= s->ray->end)
+	{
+		if (y < 0 || y >= HEIGHT)
+			continue ;
+		if (isnan(s->draw->texpos) || isinf(s->draw->texpos))
+			s->draw->texpos = 0.0;
+		s->draw->texy = ((int)s->draw->texpos) & (height_tex - 1);
+		s->draw->texpos += s->draw->step;
+		if (s->map->map_grid[s->ray->map_y][s->ray->map_x] != '1'
+			|| !s->animation->active)
+		{
+			color = ft_get_tetxure_color(s);
+		}
+		else
+		{
+			color = *(unsigned int *)(frame->address + (s->draw->texy
+						* frame->line_length + s->draw->texx
+						* (frame->bits_per_pixel / 8)));
+		}
+		ft_mlx_pixel_put(x, y, s->main, color);
+	}
+}
+
 /*
  * This function is responsible for drawing a vertical line of texture
  * on the screen at the specified x-coordinate. It uses the data stored
@@ -20,25 +49,21 @@
  */
 void	ft_draw_line_of_texture(t_data *store, int x)
 {
-	int				y;
-	t_draw			*draw;
-	unsigned int	bin_color;
-	int				height_tex;
+	int			height_tex;
+	t_sprite	*frame;
 
-	draw = store->draw;
-	y = store->ray->start - 1;
+	frame = NULL;
 	ft_texture_params_init(store);
-	height_tex = store->north->height;
-	while (++y <= store->ray->end)
+	if (store->map->map_grid[store->ray->map_y][store->ray->map_x] == '1'
+		&& store->animation->active)
 	{
-		if (y < 0 || y >= HEIGHT)
-			continue ;
-		if (isnan(draw->texpos) || isinf(draw->texpos))
-			draw->texpos = 0.0;
-		draw->texy = ((int)draw->texpos) & (height_tex - 1);
-		draw->texpos += draw->step;
-		bin_color = ft_get_tetxure_color(store);
-		ft_mlx_pixel_put(x, y, store->main, bin_color);
+		ft_update_sprite_animation(store->animation);
+		frame = &store->animation->frames[store->animation->current_frame];
+		height_tex = frame->height;
 	}
-	store->draw = draw;
+	else
+	{
+		height_tex = store->north->height;
+	}
+	ft_draw_line(store, frame, height_tex, x);
 }

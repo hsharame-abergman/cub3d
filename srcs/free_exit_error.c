@@ -37,11 +37,30 @@ void	ft_free_textures(t_data *data)
 		ft_free_texture(data->main, data->mlx);
 }
 
+void	ft_free_sprite(t_animation *animation, void *mlx)
+{
+	if (animation->frames)
+	{
+		while (animation->frame_count--)
+		{
+			if (animation->frames[animation->frame_count].image)
+				mlx_destroy_image(mlx,
+					animation->frames[animation->frame_count].image);
+			animation->frames[animation->frame_count].image = NULL;
+			animation->frames[animation->frame_count].path = NULL;
+		}
+		free(animation->frames);
+		animation->frames = NULL;
+		free(animation);
+	}
+}
+
 void	free_exit(t_data *data, char *error)
 {
 	if (!data)
 		return ;
 	ft_free_textures(data);
+	ft_free_sprite(data->animation, data->mlx);
 	if (data->player)
 		free(data->player);
 	if (data->ray)

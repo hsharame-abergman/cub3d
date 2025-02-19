@@ -111,5 +111,8 @@ bool	init_data(t_data *data, char *file)
 	data->player = init_player();
 	data->draw = ft_init_draw();
 	data->mouse_x = WIDTH / 2;
+	data->animation = malloc(sizeof(t_animation));
+	if (!data->animation)
+		return (false);
 	return (true);
 }
