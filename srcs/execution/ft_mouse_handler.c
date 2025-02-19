@@ -6,13 +6,13 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:56:23 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 20:16:14 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:09:39 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_move_right(t_data *store)
+static void	ft_move_right_mouse(t_data *store)
 {
 	t_player	*p;
 	double		old_dir_x;
@@ -30,7 +30,7 @@ void	ft_move_right(t_data *store)
 	store->player = p;
 }
 
-void	ft_move_left(t_data *store)
+static void	ft_move_left_mouse(t_data *store)
 {
 	t_player	*p;
 	double		old_dir_x;
@@ -53,11 +53,11 @@ int	ft_mouse_handler(int x, int y, t_data *store)
 	(void)y;
 	if (x > store->player->mouse_x && x <= WIDTH)
 	{
-		ft_move_left(store);
+		ft_move_left_mouse(store);
 	}
 	else if (x < store->player->mouse_x && x >= 0)
 	{
-		ft_move_right(store);
+		ft_move_right_mouse(store);
 	}
 	store->player->mouse_x = x;
 	return (1);

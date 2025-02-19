@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:43:54 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/18 16:14:59 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:13:49 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,28 @@ void	ft_raycasting(t_data *store)
 	}
 }
 
+void	ft_keypress_event(t_data *store)
+{
+	if (store->keys.w)
+		ft_move_forward(store);
+	if (store->keys.a)
+		ft_move_left(store);
+	if (store->keys.s)
+		ft_move_back(store);
+	if (store->keys.d)
+		ft_move_right(store);
+	if (store->keys.left)
+		ft_look_left(store);
+	if (store->keys.right)
+		ft_look_right(store);
+}
+
 int	ft_draw(t_data *store)
 {
 	t_data	*s;
 
 	s = store;
+	ft_keypress_event(s);
 	ft_floor_and_ceiling(s, s->map->f_color, s->map->c_color);
 	ft_raycasting(s);
 	mlx_put_image_to_window(s->mlx, s->mlx_win, s->main->image, 0, 0);

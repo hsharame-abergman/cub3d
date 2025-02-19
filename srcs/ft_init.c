@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/17 17:24:58 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:32:43 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,11 @@ bool	init_data(t_data *data, char *file)
 	data->animation = malloc(sizeof(t_animation));
 	if (!data->animation)
 		return (false);
+	data->keys.w = false;
+	data->keys.a = false;
+	data->keys.s = false;
+	data->keys.d = false;
+	data->keys.left = false;
+	data->keys.right = false;
 	return (true);
 }

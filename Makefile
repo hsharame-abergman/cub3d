@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+         #
+#    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/17 12:09:32 by hsharame         ###   ########.fr        #
+#    Updated: 2025/02/19 20:10:59 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC				:= ./get_next_line/get_next_line.c \
 ./srcs/execution/ft_compute_wall_projection.c \
 ./srcs/execution/ft_clear_window.c \
 ./srcs/execution/ft_calculate_start_step.c \
-./srcs/execution/ft_calculate_distance_to_wall.c
+./srcs/execution/ft_calculate_distance_to_wall.c \
+./srcs/execution/ft_movement.c
 
 OBJS			:= $(patsubst %.c,$(OBJDIR)/%.o,$(SRC))
 

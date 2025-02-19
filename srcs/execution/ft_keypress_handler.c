@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 23:20:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/17 17:43:13 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/19 19:57:01 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * Checking for a collision with a wall when moving forward.
  * If the player has not encountered the wall, his coordinates are updated.
  */
-static void	ft_move_forward(t_data *store)
+void	ft_move_forward(t_data *store)
 {
 	double		new_x;
 	double		new_y;
@@ -39,7 +39,7 @@ static void	ft_move_forward(t_data *store)
 	store->player = p;
 }
 
-static void	ft_move_back(t_data *store)
+void	ft_move_back(t_data *store)
 {
 	double		new_x;
 	double		new_y;
@@ -59,7 +59,7 @@ static void	ft_move_back(t_data *store)
 	store->player = p;
 }
 
-static void	ft_move_left(t_data *store)
+void	ft_move_left(t_data *store)
 {
 	double		new_x;
 	double		new_y;
@@ -79,7 +79,7 @@ static void	ft_move_left(t_data *store)
 	store->player = p;
 }
 
-static void	ft_move_right(t_data *store)
+void	ft_move_right(t_data *store)
 {
 	double		new_x;
 	double		new_y;
@@ -97,26 +97,4 @@ static void	ft_move_right(t_data *store)
 	if (grid[(int)(p->y + p->vector_y * speed)][(int)p->x] == '0')
 		p->y += new_y;
 	store->player = p;
-}
-
-int	ft_keypress_handler(int keycode, t_data *store)
-{
-	if (keycode == KEY_W || keycode == KEY_UP)
-		ft_move_forward(store);
-	if (keycode == KEY_S || keycode == KEY_DOWN)
-		ft_move_back(store);
-	if (keycode == KEY_A)
-		ft_move_left(store);
-	if (keycode == KEY_D)
-		ft_move_right(store);
-	if (keycode == KEY_LEFT)
-		ft_look_left(store);
-	if (keycode == KEY_RIGHT)
-		ft_look_right(store);
-	if (keycode == KEY_ESC)
-	{
-		ft_clear_window(store, store->main);
-		exit(0);
-	}
-	return (1);
 }

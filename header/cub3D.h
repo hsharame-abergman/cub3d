@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/18 16:19:04 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:13:23 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
+# include "X11/X.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
@@ -31,6 +32,16 @@ typedef enum e_texture_type
 	WEST,
 	EAST
 }					t_texture_type;
+
+typedef struct s_keys
+{
+	bool			w;
+	bool			a;
+	bool			s;
+	bool			d;
+	bool			left;
+	bool			right;
+}					t_keys;
 
 typedef struct s_ray
 {
@@ -137,13 +148,14 @@ typedef struct s_data
 	t_draw			*draw;
 	int				mouse_x;
 	t_animation		*animation;
+	t_keys			keys;
 }					t_data;
 
 # define WALL '1'
 # define FLOOR '0'
 # define HEIGHT 250
 # define WIDTH 500
-# define PLAYERS_SPEED 0.15
+# define PLAYERS_SPEED 0.003
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
 # define FRAME_DELAY 10000
@@ -162,7 +174,7 @@ typedef struct s_data
 t_texture			*ft_init_texture(void);
 char				*ft_remove_newline(char *str);
 int					ft_initialisation_textures(t_data *store);
-int					ft_keypress_handler(int keynum, t_data *data);
+int					ft_keypress(int keynum, t_data *data);
 int					ft_initialisation_main_texture(t_data *store);
 int					ft_destroy_handler(t_data *data);
 void				ft_clear_window(t_data *store, t_texture *main);
@@ -183,6 +195,11 @@ int					ft_mouse_handler(int x, int y, t_data *store);
 void				ft_draw_line_of_texture(t_data *store, int x);
 unsigned int		ft_get_tetxure_color(t_data *store);
 void				ft_texture_params_init(t_data *store);
+int					ft_release_key(int keynum, t_data *data);
+void				ft_move_forward(t_data *store);
+void				ft_move_back(t_data *store);
+void				ft_move_left(t_data *store);
+void				ft_move_right(t_data *store);
 
 void				find_player(t_data *data, t_map *map);
 bool				check_argv(int argc, char *filename);
