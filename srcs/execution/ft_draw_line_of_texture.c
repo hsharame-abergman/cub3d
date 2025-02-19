@@ -12,13 +12,13 @@
 
 #include "cub3D.h"
 
-static int	ft_random_wall_sprite(t_data *store)
+static int	ft_random_wall_sprite(t_data *s)
 {
 	int	is_wall;
 	int	every_ten;
 
-	is_wall = store->map->map_grid[store->ray->map_y][store->ray->map_x] != WALL;
-	every_ten = (store->ray->map_x + store->ray->map_y) % 10 != 0;
+	is_wall = s->map->map_grid[s->ray->map_y][s->ray->map_x] != WALL;
+	every_ten = (s->ray->map_x + s->ray->map_y) % 10 != 0;
 	return (is_wall || !LOAD_SPRITES || every_ten);
 }
 
