@@ -146,7 +146,7 @@ typedef struct s_data
 # define PLAYERS_SPEED 0.15
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
-# define FRAME_DELAY 100000
+# define FRAME_DELAY 10000
 # define LOAD_SPRITES 1
 
 # define KEY_W 119

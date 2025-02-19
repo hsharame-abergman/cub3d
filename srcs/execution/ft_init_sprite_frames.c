@@ -37,19 +37,24 @@ static void	ft_init_sprites(t_data *s, char **path, int w, int h)
 
 int	ft_initialisation_sprites(t_data *s, int h, int w)
 {
-	char	*path[4];
+	char	*path[9];
 
-	s->animation->frames = malloc(sizeof(t_sprite) * 4);
+	s->animation->frames = malloc(sizeof(t_sprite) * 9);
 	if (!s->animation->frames)
 		return (0);
-	s->animation->frame_count = 4;
+	s->animation->frame_count = 9;
 	s->animation->current_frame = 0;
 	s->animation->frame_delay = FRAME_DELAY;
 	s->animation->frame_timer = 0;
-	path[0] = ft_strdup("./textures/Hanna/cactus.xpm");
-	path[1] = ft_strdup("./textures/Hanna/planet.xpm");
-	path[2] = ft_strdup("./textures/Hanna/rabbit.xpm");
-	path[3] = ft_strdup("./textures/Hanna/ufo.xpm");
+	path[0] = ft_strdup("./textures/sprites/1.xpm");
+	path[1] = ft_strdup("./textures/sprites/2.xpm");
+	path[2] = ft_strdup("./textures/sprites/3.xpm");
+	path[3] = ft_strdup("./textures/sprites/4.xpm");
+	path[4] = ft_strdup("./textures/sprites/5.xpm");
+	path[5] = ft_strdup("./textures/sprites/6.xpm");
+	path[6] = ft_strdup("./textures/sprites/7.xpm");
+	path[7] = ft_strdup("./textures/sprites/8.xpm");
+	path[8] = ft_strdup("./textures/sprites/9.xpm");
 	ft_init_sprites(s, path, w, h);
 	return (1);
 }
