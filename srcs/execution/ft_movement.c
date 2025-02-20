@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 19:56:45 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/19 20:13:16 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:24:16 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_keypress(int keynum, t_data *data)
 		data->keys.right = true;
 	if (keynum == KEY_ESC)
 	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
+		ft_destroy_handler(data);
 		exit(0);
 	}
 	return (0);

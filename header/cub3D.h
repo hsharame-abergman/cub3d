@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/19 20:13:23 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:24:43 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ typedef struct s_data
 # define ROTATE_SPEED 0.07
 # define DEFAULT_DOUBLE 0.01
 # define FRAME_DELAY 10000
-# define LOAD_SPRITES 1
+# define LOAD_SPRITES 0
 
 # define KEY_W 119
 # define KEY_S 115
