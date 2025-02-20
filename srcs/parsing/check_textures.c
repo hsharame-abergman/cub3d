@@ -6,7 +6,7 @@
 /*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 18:20:12 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/18 12:44:26 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:59:06 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ char	*ft_remove_newline(char *str)
 	int		j;
 
 	i = 0;
-	while (str[i] != '\n')
-	{
+	while (str[i] && str[i] != '\n')
 		i++;
-	}
 	str2 = (char *)malloc(sizeof(char) * (i + 1));
 	i = 0;
 	j = 0;
@@ -42,6 +40,11 @@ static char	*check_acces(char *line_path, char *where)
 	char	*path;
 
 	path = ft_remove_newline(line_path);
+	if (!check_extension(path, ".xpm"))
+	{
+		free(path);
+		return (NULL);
+	}
 	fd = open(path, O_RDONLY);
 	free(path);
 	if (fd == -1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:22:54 by hsharame          #+#    #+#             */
-/*   Updated: 2025/01/25 22:45:56 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:11:59 by hsharame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ bool	space_adjacent(char **map, int i, int j)
 {
 	if (map[i - 1][j] == ' ' || map[i + 1][j] == ' '
 		|| map[i][j - 1] == ' ' || map[i][j + 1] == ' ')
+		return (true);
+	if (map[i - 1][j] == '\n' || map[i + 1][j] == '\n'
+		|| map[i][j - 1] == '\n' || map[i][j + 1] == '\n')
+		return (true);
+	if (map[i - 1][j] == '\0' || map[i + 1][j] == '\0'
+		|| map[i][j - 1] == '\0' || map[i][j + 1] == '\0')
 		return (true);
 	return (false);
 }
