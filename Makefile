@@ -6,7 +6,7 @@
 #    By: abergman <abergman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/16 17:37:37 by abergman          #+#    #+#              #
-#    Updated: 2025/02/20 10:52:02 by abergman         ###   ########.fr        #
+#    Updated: 2025/02/20 17:35:44 by abergman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ HEADERS 		= -I$(INCLUDE_DIR) -I./libft
 LIBFT			= ./libft/libft.a
 
 DEBUG			= -g3
-CFLAGS			= -Wall -Wextra -Werror -o3 $(DEBUG)
+CFLAGS			= -Wall -Wextra -Werror -o3
 
 RM				= @rm
 

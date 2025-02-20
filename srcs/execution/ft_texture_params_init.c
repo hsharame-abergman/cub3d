@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 21:39:51 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 20:40:10 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:53:46 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	calculate_wallx(t_data *store)
 		store->draw->wallx = store->player->y + ray->walldist * ray->raydir_y;
 	else
 		store->draw->wallx = store->player->x + ray->walldist * ray->raydir_x;
-	store->draw->wallx -= floor((store->draw->wallx));
+	store->draw->wallx -= floor(store->draw->wallx);
 }
 
 /*
