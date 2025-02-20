@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 19:12:16 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/16 20:38:55 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:03:54 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,17 @@ t_texture	*ft_init_texture(void)
 	new_texture->endian = 0;
 	new_texture->bits_per_pixel = 0;
 	return (new_texture);
+}
+
+int	ft_init_animation(t_data *data)
+{
+	data->animation = malloc(sizeof(t_animation));
+	if (!data->animation)
+		return (0);
+	data->animation->frames = NULL;
+	data->animation->frame_count = 0;
+	data->animation->current_frame = 0;
+	data->animation->frame_delay = 0;
+	data->animation->frame_timer = 0;
+	return (1);
 }

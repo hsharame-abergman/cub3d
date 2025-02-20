@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/19 16:32:43 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:02:48 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,7 @@ bool	init_data(t_data *data, char *file)
 	data->player = init_player();
 	data->draw = ft_init_draw();
 	data->mouse_x = WIDTH / 2;
-	data->animation = malloc(sizeof(t_animation));
-	if (!data->animation)
-		return (false);
+	ft_init_animation(data);
 	data->keys.w = false;
 	data->keys.a = false;
 	data->keys.s = false;

@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/20 11:24:43 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:04:03 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ void				ft_move_forward(t_data *store);
 void				ft_move_back(t_data *store);
 void				ft_move_left(t_data *store);
 void				ft_move_right(t_data *store);
+int					ft_init_animation(t_data *store);
 
 void				find_player(t_data *data, t_map *map);
 bool				check_argv(int argc, char *filename);

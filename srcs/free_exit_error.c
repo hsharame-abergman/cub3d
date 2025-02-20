@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsharame <hsharame@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:07:55 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/18 12:44:16 by hsharame         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:58:17 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	ft_free_sprite(t_animation *animation, void *mlx)
 		}
 		free(animation->frames);
 		animation->frames = NULL;
-		free(animation);
 	}
+	free(animation);
 }
 
 void	free_exit(t_data *data, char *error)
