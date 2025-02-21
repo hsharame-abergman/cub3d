@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:47:52 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/20 16:52:19 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:55:18 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,61 @@ typedef struct s_keys
 	bool			right;
 }					t_keys;
 
+/**
+ * @struct s_ray
+ * @brief Structure representing a ray in the raycasting algorithm.
+ * 
+ * This structure holds all the necessary information for a ray used in the
+ * raycasting process, including its direction, position, and collision details.
+ * 
+ * @var s_ray::camera
+ * The camera plane position of the ray.
+ * 
+ * @var s_ray::raydir_x
+ * The x component of the ray direction vector.
+ * 
+ * @var s_ray::raydir_y
+ * The y component of the ray direction vector.
+ * 
+ * @var s_ray::map_x
+ * The x coordinate of the map square the ray is currently in.
+ * 
+ * @var s_ray::map_y
+ * The y coordinate of the map square the ray is currently in.
+ * 
+ * @var s_ray::sidedist_x
+ * The distance from the current position to the next x-side.
+ * 
+ * @var s_ray::sidedist_y
+ * The distance from the current position to the next y-side.
+ * 
+ * @var s_ray::deltadist_x
+ * The distance the ray has to travel to go from one x-side to the next x-side.
+ * 
+ * @var s_ray::deltadist_y
+ * The distance the ray has to travel to go from one y-side to the next y-side.
+ * 
+ * @var s_ray::step_x
+ * The direction to step in the x-axis (+1 or -1).
+ * 
+ * @var s_ray::step_y
+ * The direction to step in the y-axis (+1 or -1).
+ * 
+ * @var s_ray::hit
+ * A boolean indicating whether a wall has been hit.
+ * 
+ * @var s_ray::side
+ * The side of the wall that was hit (e.g., north, south, east, west).
+ * 
+ * @var s_ray::walldist
+ * The perpendicular distance from the ray's origin to the wall.
+ * 
+ * @var s_ray::start
+ * The start position of the wall slice to be drawn.
+ * 
+ * @var s_ray::end
+ * The end position of the wall slice to be drawn.
+ */
 typedef struct s_ray
 {
 	double			camera;
@@ -63,6 +118,15 @@ typedef struct s_ray
 	int				end;
 }					t_ray;
 
+/**
+ * struct s_draw - Structure to hold drawing parameters for rendering walls.
+ * @lineh: Height of the line to draw on the screen.
+ * @wallx: Exact x-coordinate where the wall was hit.
+ * @texx: X-coordinate on the texture.
+ * @texy: Y-coordinate on the texture.
+ * @texpos: Position on the texture.
+ * @step: Step size for texture mapping.
+ */
 typedef struct s_draw
 {
 	int				lineh;
@@ -99,6 +163,37 @@ typedef struct s_map
 	int				player;
 }					t_map;
 
+/**
+ * @struct s_player
+ * @brief Structure representing a player in the game.
+ * 
+ * This structure holds the player's position, direction, and other related
+ * vectors necessary for movement and interaction within the game.
+ * 
+ * @var s_player::x
+ * Member 'x' represents the player's position on the x-axis.
+ * 
+ * @var s_player::y
+ * Member 'y' represents the player's position on the y-axis.
+ * 
+ * @var s_player::dir_x
+ * Member 'dir_x' represents the player's direction vector on the x-axis.
+ * 
+ * @var s_player::dir_y
+ * Member 'dir_y' represents the player's direction vector on the y-axis.
+ * 
+ * @var s_player::vector_x
+ * Member 'vector_x' represents an additional vector component on the x-axis.
+ * 
+ * @var s_player::vector_y
+ * Member 'vector_y' represents an additional vector component on the y-axis.
+ * 
+ * @var s_player::mouse_x
+ * Member 'mouse_x' represents the mouse position on the x-axis.
+ * 
+ * @var s_player::mouse_y
+ * Member 'mouse_y' represents the mouse position on the y-axis.
+ */
 typedef struct s_player
 {
 	double			x;
@@ -108,7 +203,6 @@ typedef struct s_player
 	double			vector_x;
 	double			vector_y;
 	double			mouse_x;
-	double			mouse_y;
 }					t_player;
 
 typedef struct s_sprite
@@ -156,7 +250,7 @@ typedef struct s_data
 # define HEIGHT 250
 # define WIDTH 500
 # define PLAYERS_SPEED 0.003
-# define ROTATE_SPEED 0.07
+# define ROTATE_SPEED 0.005
 # define DEFAULT_DOUBLE 0.01
 # define FRAME_DELAY 10000
 # define LOAD_SPRITES 1

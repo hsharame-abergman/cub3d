@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:20:44 by hsharame          #+#    #+#             */
-/*   Updated: 2025/02/20 12:02:48 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:50:27 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_player	*init_player(void)
 	player->vector_x = 0;
 	player->vector_y = 0;
 	player->mouse_x = 0;
-	player->mouse_y = 0;
 	return (player);
 }
 
