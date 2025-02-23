@@ -6,7 +6,7 @@
 /*   By: abergman <abergman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:15:27 by abergman          #+#    #+#             */
-/*   Updated: 2025/02/21 14:39:05 by abergman         ###   ########.fr       */
+/*   Updated: 2025/02/23 11:59:06 by abergman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_mini_map(t_data *store)
 	ft_draw_triangle(
 		store->player->x * (HEIGHT / store->map->height) / 5 + 9, 
 		store->player->y * (HEIGHT / store->map->height) / 5 - 14 + (HEIGHT - (store->map->height * (HEIGHT / store->map->height) / 5)), 
-		store->player->vector_x,
-		store->player->vector_y, 
+		store->player->dir_x,
+		store->player->dir_y, 
 		store, 0x000);
 }
